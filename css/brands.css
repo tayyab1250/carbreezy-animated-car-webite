@@ -1,0 +1,215 @@
+/* ============================================================
+   CarBreezy — Brands page
+   ============================================================ */
+
+/* ---------- Marquee ---------- */
+.marquee {
+    overflow: hidden;
+    border-block: 1px solid var(--line);
+    padding: 16px 0;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 56px;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-track span {
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ---------- Brand grid ---------- */
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap: var(--gap);
+}
+
+.brand-card {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    padding: 26px 24px;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+}
+
+.brand-card::after {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 169, 107, 0.14), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--t);
+}
+
+.brand-card:hover {
+    border-color: var(--accent-line);
+    box-shadow: var(--shadow-md);
+}
+
+.brand-card:hover::after {
+    opacity: 1;
+}
+
+.brand-mark {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: var(--surface-3);
+    border: 1px solid var(--line-strong);
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--accent-text);
+    letter-spacing: -0.02em;
+}
+
+.brand-card h3 {
+    font-size: 1.28rem;
+}
+
+.brand-card > p {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.brand-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    font-size: 0.82rem;
+    color: var(--text-soft);
+}
+
+.brand-numbers i {
+    color: var(--accent-text);
+    margin-right: 6px;
+}
+
+.brand-card .btn {
+    margin-top: 4px;
+}
+
+/* ---------- Spotlight detail ---------- */
+.spotlight-list {
+    display: grid;
+    gap: 18px;
+}
+
+.spotlight-item {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(18px, 3vw, 40px);
+    align-items: center;
+    padding: clamp(20px, 3vw, 34px);
+    border-radius: var(--r-xl);
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.spotlight-item img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: var(--r-md);
+}
+
+.spotlight-item h2 {
+    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+    margin-bottom: 10px;
+}
+
+.spotlight-item p {
+    color: var(--muted);
+    font-size: 0.96rem;
+    margin-bottom: 16px;
+}
+
+.model-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+/* ---------- Family split ---------- */
+.split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: var(--gap);
+}
+
+.family-card {
+    padding: 26px 24px;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+
+.family-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.family-card h3 i {
+    color: var(--accent-text);
+}
+
+.family-card ul {
+    display: grid;
+    gap: 8px;
+}
+
+.family-card li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+}
+
+.family-card li span {
+    color: var(--muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .spotlight-item {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .brand-card {
+        padding: 22px 18px;
+    }
+}

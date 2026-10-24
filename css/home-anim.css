@@ -1,0 +1,219 @@
+/* ============================================================
+   CarBreezy — Homepage Global Animations
+   Applies editorial-style blur + slide reveals to every
+   section heading, eyebrow, lead text, and card on the page.
+   ============================================================ */
+
+/* ─── Override: enhanced .reveal adds blur like the editorial ─── */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(6px);
+    transition:
+        opacity     0.80s cubic-bezier(.2, .72, .12, 1),
+        transform   0.80s cubic-bezier(.2, .72, .12, 1),
+        filter      0.70s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Staggered delays */
+.reveal-d1 { transition-delay: 0.10s; }
+.reveal-d2 { transition-delay: 0.20s; }
+.reveal-d3 { transition-delay: 0.32s; }
+.reveal-d4 { transition-delay: 0.44s; }
+
+/* ─── Section heading split-line animation ─── */
+/* Mirrors the editorial .cb-line pattern.
+   Applied by home-anim.js wrapping h2/h1 text.  */
+.anim-heading {
+    overflow: visible;
+}
+
+.anim-heading-line {
+    display: block;
+    overflow: hidden;
+    padding: .02em 0 .07em;
+    line-height: inherit;
+}
+
+.anim-heading-line > span {
+    display: inline-block;
+    transform: translateY(108%);
+    opacity: 0;
+    filter: blur(6px);
+    transition:
+        transform 1.0s cubic-bezier(.2, .72, .12, 1),
+        opacity   0.72s ease,
+        filter    0.90s ease;
+}
+
+.anim-heading.is-revealed .anim-heading-line > span {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+}
+
+.anim-heading.is-revealed .anim-heading-line:nth-child(2) > span { transition-delay: .09s; }
+.anim-heading.is-revealed .anim-heading-line:nth-child(3) > span { transition-delay: .18s; }
+.anim-heading.is-revealed .anim-heading-line:nth-child(4) > span { transition-delay: .27s; }
+
+/* ─── Eyebrow fade-slide ─── */
+.anim-eyebrow {
+    opacity: 0;
+    transform: translateX(-14px);
+    filter: blur(3px);
+    transition:
+        opacity   0.65s ease,
+        transform 0.65s cubic-bezier(.2, .72, .12, 1),
+        filter    0.55s ease;
+}
+
+.anim-eyebrow.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+}
+
+/* ─── Lead / paragraph text fade-up ─── */
+.anim-text {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+    transition:
+        opacity   0.80s ease 0.18s,
+        transform 0.80s cubic-bezier(.2, .72, .12, 1) 0.18s,
+        filter    0.70s ease 0.18s;
+}
+
+.anim-text.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* ─── Button / CTA fade-up (slight extra delay) ─── */
+.anim-cta {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        opacity   0.70s ease 0.34s,
+        transform 0.70s cubic-bezier(.2, .72, .12, 1) 0.34s;
+}
+
+.anim-cta.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Card stagger (applied via JS nth-child) ─── */
+.anim-card {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(4px);
+    transition:
+        opacity   0.72s cubic-bezier(.2, .72, .12, 1),
+        transform 0.72s cubic-bezier(.2, .72, .12, 1),
+        filter    0.60s ease;
+    /* base.css card hover transitions are additive, not overridden */
+}
+
+.anim-card.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* ─── Section head: centred symmetric layout ─── */
+.section-head {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px 0;
+    margin-bottom: clamp(28px, 3.5vw, 52px);
+}
+
+.section-head > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-head > div .lead {
+    max-width: 54ch;
+    margin-top: 10px;
+}
+
+/* Keep the "section-head" button centred */
+.section-head > .btn {
+    margin-top: 4px;
+}
+
+/* ─── Hero eyebrow + heading centre-aligned ─── */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content .lead {
+    margin-inline: auto;
+}
+
+/* ─── Interactive hero centred text on all breakpoints ─── */
+@media (min-width: 961px) {
+    .hero-split {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ─── CTA band symmetric centre ─── */
+.cta-band {
+    align-items: center;
+    text-align: center;
+}
+
+.cta-band .hero-actions {
+    justify-content: center;
+}
+
+/* ─── Stack section head: centred ─── */
+.stack-section .section-head {
+    margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+/* ─── Feature grid symmetric ─── */
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+/* ─── Finale text center ─── */
+.finale-headline {
+    text-align: center;
+}
+
+/* ─── Reduced motion override ─── */
+@media (prefers-reduced-motion: reduce) {
+    .anim-heading-line > span,
+    .anim-eyebrow,
+    .anim-text,
+    .anim-cta,
+    .anim-card,
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition-duration: .01ms !important;
+    }
+
+    .anim-heading.is-revealed .anim-heading-line > span {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
+}

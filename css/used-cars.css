@@ -1,0 +1,299 @@
+/* ============================================================
+   CarBreezy — Used Cars page
+   ============================================================ */
+
+/* ---------- Search strip ---------- */
+.search-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: 14px;
+    padding: 22px;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 28px;
+}
+
+.search-strip .field {
+    margin: 0;
+}
+
+.select-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.select-row .btn {
+    width: auto;
+    flex: 1 1 auto;
+}
+
+/* ---------- Result toolbar ---------- */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.toolbar p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.sort-select {
+    padding: 10px 14px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+/* ---------- Listing layout ---------- */
+.listing-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: var(--gap);
+    align-items: start;
+}
+
+.listing-list {
+    display: grid;
+    gap: 16px;
+}
+
+.listing {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    overflow: hidden;
+}
+
+.listing-media {
+    position: relative;
+    background: var(--surface-3);
+}
+
+.listing-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.listing:hover .listing-media img {
+    transform: scale(1.06);
+}
+
+.listing-media .chip {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.listing-body {
+    padding: 20px;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+}
+
+.listing-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.listing-head h3 {
+    font-size: 1.16rem;
+}
+
+.listing-head p {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.listing-price {
+    font-size: 1.34rem;
+    font-weight: 900;
+    color: var(--accent-text);
+    white-space: nowrap;
+}
+
+.listing-price small {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 0.86rem;
+    color: var(--text-soft);
+}
+
+.meta-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.meta-row i {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.inspection {
+    display: grid;
+    gap: 8px;
+}
+
+.inspection-bar {
+    height: 7px;
+    border-radius: var(--r-pill);
+    background: rgba(245, 245, 242, 0.10);
+    overflow: hidden;
+}
+
+.inspection-bar span {
+    display: block;
+    height: 100%;
+    border-radius: var(--r-pill);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.listing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    position: static;
+    z-index: var(--z-sticky);
+    display: grid;
+    gap: 16px;
+}
+
+.side-card {
+    padding: 22px;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+}
+
+.side-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+}
+
+.side-card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.side-list {
+    display: grid;
+    gap: 10px;
+}
+
+.side-list div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    padding: 9px 12px;
+    border-radius: var(--r-sm);
+    background: rgba(245, 245, 242, 0.03);
+}
+
+.side-list strong {
+    color: var(--accent-text);
+    font-weight: 800;
+}
+
+.guarantee {
+    border: 1px solid var(--accent-line);
+    background: var(--accent-soft);
+}
+
+.guarantee i {
+    font-size: 1.5rem;
+    color: var(--accent-text);
+    margin-bottom: 10px;
+}
+
+.no-results {
+    padding: 60px 24px;
+    text-align: center;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--r-lg);
+    color: var(--muted);
+}
+
+/* ---------- History section ---------- */
+.history-step {
+    display: flex;
+    gap: 16px;
+    align-items: start;
+}
+
+.history-step b {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--surface-3);
+    border: 1px solid var(--line-strong);
+    color: var(--accent-text);
+    font-size: 0.8rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+    .listing-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sidebar {
+        position: static;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .listing {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .listing-media img {
+        aspect-ratio: 16 / 10;
+        height: auto;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sort-select {
+        width: 100%;
+    }
+}

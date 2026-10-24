@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarBreezy - Digital Automotive Marketplace</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- Root & Theme Variables --- */
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-hover: #2563eb;
+            --secondary-color: #0284c7;
+            --accent-color: #f59e0b;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --transition-speed: 0.3s;
+        }
+
+        /* --- Global Reset & Fonts --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 40px; /* Space for ticker */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Header & Top Bar --- */
+        header {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        .visitor-counter {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .visitor-counter i {
+            color: var(--accent-color);
+        }
+
+        /* --- Navigation Menu --- */
+        nav {
+            background-color: #0f172a;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            display: block;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+        }
+
+        /* Navigation Hover & Active States with Fade Effects */
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #ffffff;
+            background-color: var(--primary-hover);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .nav-links li a.clicked {
+            background-color: var(--accent-color);
+            color: #0f172a;
+        }
+
+        /* --- Hero Banner --- */
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-banner h2 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+        }
+
+        /* --- Main Layout & Sections --- */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* --- Filters --- */
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border: 2px solid var(--primary-color);
+            background-color: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Car Grid & Cards --- */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .car-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .car-card-body {
+            padding: 18px;
+        }
+
+        .car-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .tag-new { background-color: #dcfce7; color: #166534; }
+        .tag-used { background-color: #fef3c7; color: #92400e; }
+
+        .car-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .car-price {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* --- Modal Window --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 750px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .modal-header img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-title-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        /* Modal Tabs */
+        .modal-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 15px;
+        }
+
+        .tab-btn {
+            padding: 10px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+            transition: all var(--transition-speed);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* --- Offers Grid --- */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .offer-card {
+            background: linear-gradient(135deg, #1e3a8a, #0284c7);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .offer-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .offer-badge {
+            background-color: var(--accent-color);
+            color: #0f172a;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        /* --- Gallery Grid --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Contact, About, Sitemap, Queries Forms --- */
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* --- Continuous Scrolling Ticker --- */
+        .ticker-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0f172a;
+            color: #f8fafc;
+            height: 38px;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-top: 2px solid var(--accent-color);
+        }
+
+        .ticker-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 25s linear infinite;
+            font-size: 0.9rem;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-banner h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links li a {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <i class="fa-solid font-awesome fa-car-rear logo-icon"></i>
+            <div class="logo-text">
+                <h1>Car<span>Breezy</span></h1>
+            </div>
+        </div>
+        <div class="visitor-counter">
+            <i class="fa-solid fa-users"></i>
+            <span>Visitors: <strong id="visitorCount">0</strong></span>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#new" class="nav-btn active" onclick="navigate('inventory', 'new', this)">New Cars</a></li>
+            <li><a href="#used" class="nav-btn" onclick="navigate('inventory', 'used', this)">Used Cars</a></li>
+            <li><a href="#brands" class="nav-btn" onclick="navigate('inventory', 'brands', this)">Brands</a></li>
+            <li><a href="#offers" class="nav-btn" onclick="navigate('offers', null, this)">Offers</a></li>
+            <li><a href="#gallery" class="nav-btn" onclick="navigate('gallery', null, this)">Gallery</a></li>
+            <li><a href="#about" class="nav-btn" onclick="navigate('about', null, this)">About Us</a></li>
+            <li><a href="#contact" class="nav-btn" onclick="navigate('contact', null, this)">Contact Us</a></li>
+            <li><a href="#sitemap" class="nav-btn" onclick="navigate('sitemap', null, this)">Sitemap</a></li>
+            <li><a href="#queries" class="nav-btn" onclick="navigate('queries', null, this)">Queries</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <h2>Your Car Buying Destiny in Your Hands</h2>
+        <p>Explore an expansive, cross-brand selection of vehicles from the comfort of your home with total pricing transparency.</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Inventory Section (New, Used, Brands) -->
+        <section id="inventory" class="section active">
+            <h2 class="section-title" id="inventoryTitle">Available Vehicles</h2>
+            
+            <!-- Filters -->
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterCars('all', this)">All Body Types</button>
+                <button class="filter-btn" onclick="filterCars('Hatchback', this)">Hatchbacks</button>
+                <button class="filter-btn" onclick="filterCars('Sedan', this)">Sedans</button>
+                <button class="filter-btn" onclick="filterCars('Convertible', this)">Convertibles</button>
+                <button class="filter-btn" onclick="filterCars('SUV', this)">SUVs</button>
+            </div>
+
+            <!-- Vehicle Listing Grid -->
+            <div class="car-grid" id="carGrid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section id="offers" class="section">
+            <h2 class="section-title">Exclusive Offers & Deals</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <span class="offer-badge">Limited Time</span>
+                    <h3>0% APR Financing</h3>
+                    <p>Drive home selected new Sedan and Hatchback models with zero percent interest for up to 48 months.</p>
+                </div>
+                <div class="offer-card">
+                    <span class="offer-badge">Trade-In Bonus</span>
+                    <h3>$2,000 Extra Trade Value</h3>
+                    <p>Upgrade your vehicle today and receive an instant $2,000 valuation bonus on certified used models.</p>
+                </div>
+                <div class="offer-card">
+                    <span class="offer-badge">Free Maintenance</span>
+                    <h3>2-Year Service Package</h3>
+                    <p>All brand new convertible purchases include complimentary 2-year scheduled maintenance and roadside support.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <h2 class="section-title">Car Showcase Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=600&q=80" alt="Sports Car">
+                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80" alt="Luxury Sedan">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="Red Sports Car">
+                <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80" alt="SUV Outdoor">
+                <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=600&q=80" alt="Modern Coupe">
+                <img src="https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=600&q=80" alt="Electric SUV">
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About CarBreezy</h2>
+            <div class="info-card">
+                <p>CarBreezy is a leading automotive digital marketplace that seeks to make car buying and selling easy, transparent, and efficient. Your car buying destiny is in your hands, but we will help you every step of the way.</p>
+                <br>
+                <p>From discovery to delivery, consumers can use CarBreezy to explore vehicles from an expansive, cross-brand selection of inventory from our vast network. We provide useful tools, research, market context, and pricing transparency as you embark on your car-buying journey.</p>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="info-card">
+                <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> support@carbreezy.com</p>
+                <p><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +1 (800) 555-BREEZY</p>
+                <p><i class="fa-solid fa-location-dot"></i> <strong>Address:</strong> 100 Automotive Blvd, Suite 400, Tech City, USA</p>
+            </div>
+        </section>
+
+        <!-- Sitemap Section -->
+        <section id="sitemap" class="section">
+            <h2 class="section-title">Site Map</h2>
+            <div class="info-card">
+                <ul>
+                    <li><a href="#new" onclick="navigate('inventory', 'new')">New Car Inventory</a></li>
+                    <li><a href="#used" onclick="navigate('inventory', 'used')">Pre-Owned Vehicles</a></li>
+                    <li><a href="#brands" onclick="navigate('inventory', 'brands')">Featured Brands</a></li>
+                    <li><a href="#offers" onclick="navigate('offers')">Promotions & Offers</a></li>
+                    <li><a href="#gallery" onclick="navigate('gallery')">Image Gallery</a></li>
+                    <li><a href="#about" onclick="navigate('about')">About CarBreezy</a></li>
+                    <li><a href="#contact" onclick="navigate('contact')">Contact Details</a></li>
+                    <li><a href="#queries" onclick="navigate('queries')">Customer Queries Form</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Queries Section -->
+        <section id="queries" class="section">
+            <h2 class="section-title">Submit a Query</h2>
+            <div class="info-card">
+                <form onsubmit="handleQuerySubmit(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Query / Inquiry</label>
+                        <textarea rows="4" required placeholder="How can we help you find your vehicle?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Query</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Car Specification Modal -->
+    <div class="modal" id="carModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <img id="modalImg" src="" alt="Car Image">
+            </div>
+            <div class="modal-body">
+                <div class="modal-title-price">
+                    <h2 id="modalTitle">Car Model</h2>
+                    <span id="modalPrice" class="car-price">$0</span>
+                </div>
+
+                <!-- Tabs -->
+                <div class="modal-tabs">
+                    <button class="tab-btn active" onclick="switchTab('internal', this)">Internal Specs</button>
+                    <button class="tab-btn" onclick="switchTab('external', this)">External Specs</button>
+                    <button class="tab-btn" onclick="switchTab('engine', this)">Engine</button>
+                    <button class="tab-btn" onclick="switchTab('dimensions', this)">Dimensions</button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div id="tab-internal" class="tab-content active">
+                    <ul class="spec-list" id="specInternal"></ul>
+                </div>
+                <div id="tab-external" class="tab-content">
+                    <ul class="spec-list" id="specExternal"></ul>
+                </div>
+                <div id="tab-engine" class="tab-content">
+                    <ul class="spec-list" id="specEngine"></ul>
+                </div>
+                <div id="tab-dimensions" class="tab-content">
+                    <ul class="spec-list" id="specDimensions"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Continuous Scrolling Ticker -->
+    <div class="ticker-bar">
+        <div class="ticker-text" id="tickerText">
+            Welcome to CarBreezy Marketplace | Loading real-time location and time...
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* --- Mock Vehicle Database --- */
+        const carDatabase = [
+            {
+                id: 1,
+                name: "Aero Roadster Convertible",
+                category: "Convertible",
+                condition: "new",
+                brand: "Aero",
+                price: "$64,500",
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80",
+                internal: { Upholstery: "Nappa Leather", Seating: "2 Seater", Infotainment: "12.3-inch Touchscreen", Sound: "Bose 10-Speaker" },
+                external: { Roof: "Retractable Soft Top", Wheels: "19-inch Alloy", Headlights: "Adaptive LED" },
+                engine: { Type: "3.0L Turbo V6", Horsepower: "385 HP", Transmission: "8-Speed Automatic" },
+                dimensions: { Length: "4,400 mm", Width: "1,850 mm", Height: "1,290 mm", Weight: "1,550 kg" }
+            },
+            {
+                id: 2,
+                name: "Apex Velocity Sedan",
+                category: "Sedan",
+                condition: "new",
+                brand: "Apex",
+                price: "$42,000",
+                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80",
+                internal: { Upholstery: "Synthetic Leather", Seating: "5 Seater", Infotainment: "10-inch Display", Climate: "Dual-Zone Control" },
+                external: { Grille: "Chrome Mesh", Wheels: "18-inch Alloy", Sunroof: "Panoramic Glass" },
+                engine: { Type: "2.0L Turbocharged Inline-4", Horsepower: "255 HP", Transmission: "7-Speed Dual-Clutch" },
+                dimensions: { Length: "4,750 mm", Width: "1,820 mm", Height: "1,440 mm", Weight: "1,620 kg" }
+            },
+            {
+                id: 3,
+                name: "Urban Sprint Hatchback",
+                category: "Hatchback",
+                condition: "used",
+                brand: "Urban",
+                price: "$18,200",
+                image: "https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=600&q=80",
+                internal: { Upholstery: "Premium Fabric", Seating: "5 Seater", Audio: "Standard Bluetooth Radio" },
+                external: { RearSpoiler: "Sport Wing", Wheels: "16-inch Steel", Mirrors: "Power Adjustable" },
+                engine: { Type: "1.5L Naturally Aspirated", Horsepower: "118 HP", Transmission: "6-Speed Manual" },
+                dimensions: { Length: "4,050 mm", Width: "1,730 mm", Height: "1,460 mm", Weight: "1,180 kg" }
+            },
+            {
+                id: 4,
+                name: "Horizon Cruiser SUV",
+                category: "SUV",
+                condition: "new",
+                brand: "Horizon",
+                price: "$53,800",
+                image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=600&q=80",
+                internal: { Upholstery: "Full Leather", Seating: "7 Seater", RearScreen: "Dual 10-inch Displays" },
+                external: { RoofRails: "Aluminium", Clearance: "210 mm", PowerTailgate: "Hands-free" },
+                engine: { Type: "3.5L V6 AWD", Horsepower: "295 HP", Transmission: "9-Speed Automatic" },
+                dimensions: { Length: "4,980 mm", Width: "1,960 mm", Height: "1,750 mm", Weight: "2,100 kg" }
+            }
+        ];
+
+        let currentFilterCategory = 'all';
+        let currentCondition = 'all';
+
+        /* --- Visitor Counter Management --- */
+        function initVisitorCount() {
+            let count = localStorage.getItem('carbreezy_visitor_count');
+            count = count ? parseInt(count) + 1 : 1248;
+            localStorage.setItem('carbreezy_visitor_count', count);
+            document.getElementById('visitorCount').innerText = count.toLocaleString();
+        }
+
+        /* --- SPA Navigation & Menu State --- */
+        function navigate(sectionId, filterSub, element) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) targetSection.classList.add('active');
+
+            // Handle Menu Click States
+            if (element) {
+                const navLinks = document.querySelectorAll('.nav-links a');
+                navLinks.forEach(link => link.classList.remove('active', 'clicked'));
+                element.classList.add('active', 'clicked');
+            }
+
+            // Sub-filter configuration
+            if (sectionId === 'inventory') {
+                if (filterSub === 'new') {
+                    currentCondition = 'new';
+                    document.getElementById('inventoryTitle').innerText = 'New Cars Inventory';
+                } else if (filterSub === 'used') {
+                    currentCondition = 'used';
+                    document.getElementById('inventoryTitle').innerText = 'Pre-Owned (Used) Vehicles';
+                } else {
+                    currentCondition = 'all';
+                    document.getElementById('inventoryTitle').innerText = 'All Available Vehicles & Brands';
+                }
+                renderCars();
+            }
+
+            window.scrollTo({ top: 300, behavior: 'smooth' });
+        }
+
+        /* --- Filter Cars --- */
+        function filterCars(category, btnElement) {
+            currentFilterCategory = category;
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            renderCars();
+        }
+
+        /* --- Render Cars to Grid --- */
+        function renderCars() {
+            const grid = document.getElementById('carGrid');
+            grid.innerHTML = '';
+
+            const filtered = carDatabase.filter(car => {
+                const matchesCat = (currentFilterCategory === 'all' || car.category === currentFilterCategory);
+                const matchesCond = (currentCondition === 'all' || car.condition === currentCondition);
+                return matchesCat && matchesCond;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = '<p>No vehicles found matching the selected criteria.</p>';
+                return;
+            }
+
+            filtered.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'car-card';
+                card.onclick = () => openModal(car.id);
+                card.innerHTML = `
+                    <img src="${car.image}" alt="${car.name}">
+                    <div class="car-card-body">
+                        <span class="car-tag tag-${car.condition}">${car.condition.toUpperCase()}</span>
+                        <h3>${car.name}</h3>
+                        <p class="car-price">${car.price}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        /* --- Modal Operations & Tabs --- */
+        function openModal(carId) {
+            const car = carDatabase.find(c => c.id === carId);
+            if (!car) return;
+
+            document.getElementById('modalImg').src = car.image;
+            document.getElementById('modalTitle').innerText = car.name;
+            document.getElementById('modalPrice').innerText = car.price;
+
+            populateSpecList('specInternal', car.internal);
+            populateSpecList('specExternal', car.external);
+            populateSpecList('specEngine', car.engine);
+            populateSpecList('specDimensions', car.dimensions);
+
+            document.getElementById('carModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('carModal').classList.remove('active');
+        }
+
+        function populateSpecList(elementId, specs) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            for (let [key, val] of Object.entries(specs)) {
+                container.innerHTML += `<li><strong>${key}:</strong> <span>${val}</span></li>`;
+            }
+        }
+
+        function switchTab(tabKey, btnElement) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            btnElement.classList.add('active');
+            document.getElementById(`tab-${tabKey}`).classList.add('active');
+        }
+
+        /* --- Continuous Ticker with Date & Geolocation --- */
+        function initTicker() {
+            const tickerEl = document.getElementById('tickerText');
+
+            function updateTicker(locationStr) {
+                const now = new Date();
+                const dateTimeStr = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+                tickerEl.innerText = `[CarBreezy Live Ticker] Current Date & Time: ${dateTimeStr} | Location: ${locationStr} | Explore transparent pricing on all certified models today!`;
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const lat = pos.coords.latitude.toFixed(2);
+                        const lon = pos.coords.longitude.toFixed(2);
+                        updateTicker(`Lat: ${lat}, Lon: ${lon}`);
+                    },
+                    () => {
+                        updateTicker("Location Access Granted / Default Region");
+                    }
+                );
+            } else {
+                updateTicker("Location Services Unsupported");
+            }
+
+            setInterval(() => {
+                const currentText = tickerEl.innerText;
+                const now = new Date();
+                const timeStr = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+                tickerEl.innerText = currentText.replace(/Current Date & Time: [^|]+/, `Current Date & Time: ${timeStr} `);
+            }, 1000);
+        }
+
+        function handleQuerySubmit(e) {
+            e.preventDefault();
+            alert('Thank you for submitting your query to CarBreezy! Our support team will reach out shortly.');
+            e.target.reset();
+        }
+
+        /* --- Initialization --- */
+        window.onload = function() {
+            initVisitorCount();
+            renderCars();
+            initTicker();
+        };
+    </script>
+</body>
+</html>
