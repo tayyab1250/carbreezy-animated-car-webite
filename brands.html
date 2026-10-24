@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands — CarBreezy</title>
+    <meta name="description" content="Explore every brand on CarBreezy — from BMW and Tesla to Ford and Jeep — with lineup details, market data and current offers.">
+    <link rel="icon" type="image/png" href="assets/logo-160.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/doom-img-1600.webp" fetchpriority="high">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/brands.min.css">
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/site.min.js" defer></script>
+</head>
+<body>
+<div class="cb-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="wrap-wide header-inner">
+            <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+            <nav class="nav" id="primaryNav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="new-cars.html">New Cars</a>
+                <a href="used-cars.html">Used Cars</a>
+                <a href="brands.html" class="active">Brands</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <a class="btn btn-primary btn-sm" href="contact.html">Find my brand</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- NOTE: a relative url() inside a custom property is resolved against the
+             stylesheet (css/), not this document, so it needs the ../ prefix.
+             The Brands hero keeps its image anchored to the top, unlike every
+             other page hero. -->
+        <section class="page-hero" style="--page-image: url('../assets/doom-img-1600.webp'); --page-position: center top;">
+            <div class="wrap-wide">
+                <span class="eyebrow">36 marques</span>
+                <h1 class="display">Every brand, one honest marketplace</h1>
+                <p class="lead">Compare real ownership numbers across marques — resale value, service costs,
+                    reliability data and what each brand is discounting this month.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a> <span>/</span> <span>Brands</span>
+                </nav>
+            </div>
+        </section>
+
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track" id="marqueeTrack"></div>
+        </div>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Lineup</span>
+                        <h2 class="h2">Browse by brand</h2>
+                        <p class="lead">Listing counts update daily from partner dealers across the network.</p>
+                    </div>
+                </div>
+                <div class="brand-grid" id="brandGrid"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">In focus</span>
+                        <h2 class="h2">Brand spotlights</h2>
+                        <p class="lead">A closer look at three marques buyers keep coming back to this quarter.</p>
+                    </div>
+                </div>
+                <div class="spotlight-list" id="spotlightList"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Segments</span>
+                        <h2 class="h2">Popular families</h2>
+                    </div>
+                </div>
+                <div class="split" id="familyGrid"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="card card-pad reveal" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+                    <div>
+                        <h2 class="h3">Looking for a specific marque?</h2>
+                        <p class="muted">We source to order when a brand is not in stock — typically delivered within three weeks.</p>
+                    </div>
+                    <a class="btn btn-primary" href="contact.html">Request a specific model</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap-wide">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+                    <p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="new-cars.html">New cars</a></li>
+                        <li><a href="used-cars.html">Used cars</a></li>
+                        <li><a href="brands.html">Brands</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="contact.html#form">Request a callback</a></li>
+                        <li><a href="contact.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+                <span>Inspections · Financing · Nationwide delivery</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------- Page data ---------- */
+        var BRANDS = [
+            { id: 'bmw', name: 'BMW', listings: 842, models: 38, resale: '62%', service: '£680 / yr', origin: 'Germany', type: 'Premium', blurb: 'Balanced handling, strong resale and the widest driver-focused range we stock.', image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=80', highlight: true, models_list: ['3 Series', '5 Series', 'X3', 'X5', 'M2', 'i4'] },
+            { id: 'tesla', name: 'Tesla', listings: 396, models: 12, resale: '58%', service: '£190 / yr', origin: 'USA', type: 'Electric', blurb: 'Simplest ownership maths in the market, with over-the-air updates for the whole fleet.', image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80', highlight: true, models_list: ['Model 3', 'Model Y', 'Model S', 'Model X', 'Cybertruck'] },
+            { id: 'ford', name: 'Ford', listings: 1180, models: 46, resale: '54%', service: '£420 / yr', origin: 'USA', type: 'Mainstream', blurb: 'The widest utility range on the market, from the compact Puma to the full-size Ranger.', image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80', highlight: true, models_list: ['Puma', 'Focus', 'Kuga', 'Explorer', 'Ranger', 'Mustang'] },
+            { id: 'mercedes', name: 'Mercedes', listings: 764, models: 41, resale: '61%', service: '£720 / yr', origin: 'Germany', type: 'Luxury', blurb: 'Quiet, refined and endlessly configurable, with an extensive EQ range for electric buyers.', image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=80', highlight: false, models_list: ['C-Class', 'E-Class', 'GLC', 'GLE', 'S-Class', 'EQE'] },
+            { id: 'honda', name: 'Honda', listings: 512, models: 29, resale: '63%', service: '£360 / yr', origin: 'Japan', type: 'Reliable', blurb: 'Low running costs and class-leading reliability make Honda the value pick year after year.', image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1200&q=80', highlight: false, models_list: ['Civic', 'Accord', 'CR-V', 'HR-V', 'e:NS3'] },
+            { id: 'jeep', name: 'Jeep', listings: 348, models: 17, resale: '56%', service: '£590 / yr', origin: 'USA', type: 'Off-road', blurb: 'Genuine four-wheel-drive capability with trail-rated trims that still handle daily life.', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80', highlight: false, models_list: ['Wrangler', 'Gladiator', 'Compass', 'Grand Cherokee'] },
+            { id: 'audi', name: 'Audi', listings: 690, models: 33, resale: '60%', service: '£640 / yr', origin: 'Germany', type: 'Premium', blurb: 'Understated design, quattro confidence and a clean, driver-focused cabin.', image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80', highlight: false, models_list: ['A3', 'A4', 'A6', 'Q3', 'Q5', 'e-tron'] },
+            { id: 'volt', name: 'Volt', listings: 208, models: 9, resale: '57%', service: '£210 / yr', origin: 'USA', type: 'Electric', blurb: 'Long-range dual-motor drivetrains with the fastest charging curve in our inventory.', image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=80', highlight: false, models_list: ['E-Drive GT', 'E-Drive Cross', 'E-Drive Van'] }
+        ];
+
+        var FAMILIES = [
+            { icon: 'fa-solid fa-city', title: 'Executive saloons', text: 'Long-distance comfort with genuine back-seat space.', rows: [['BMW 5 Series', 'from £48,200'], ['Mercedes E-Class', 'from £52,900'], ['Audi A6', 'from £46,700']] },
+            { icon: 'fa-solid fa-mountain-sun', title: 'Family SUVs', text: 'High seating, large boots and easy ingress for child seats.', rows: [['Volvo XC90', 'from £58,400'], ['Kia Sorento', 'from £39,500'], ['Ford Explorer', 'from £44,100']] },
+            { icon: 'fa-solid fa-bolt', title: 'Electric', text: 'Charging included in the total cost of ownership estimate.', rows: [['Tesla Model Y', 'from £41,900'], ['Polestar 2', 'from £37,600'], ['VW ID.4', 'from £34,300']] },
+            { icon: 'fa-solid fa-truck-pickup', title: 'Utility & pickup', text: 'Towing, load beds and working capability rated and verified.', rows: [['Ford Ranger', 'from £31,200'], ['Jeep Wrangler', 'from £36,800'], ['Isuzu D-Max', 'from £28,900']] }
+        ];
+
+        function initials(name) {
+            return name.replace(/[^A-Za-z ]/g, '').split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2).toUpperCase();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var marqueeText = BRANDS.map(function (b) { return b.name; }).join(' · ');
+            document.getElementById('marqueeTrack').innerHTML =
+                '<span>' + marqueeText + '</span><span>' + marqueeText + '</span>';
+
+            document.getElementById('brandGrid').innerHTML = BRANDS.map(function (b) {
+                return '<article class="brand-card reveal" id="' + b.id + '">' +
+                    '<span class="brand-mark">' + initials(b.name) + '</span>' +
+                    '<div><h3>' + b.name + '</h3><p>' + b.blurb + '</p></div>' +
+                    '<div class="brand-numbers">' +
+                    '<span><i class="fa-solid fa-car"></i>' + b.listings.toLocaleString('en-US') + ' listings</span>' +
+                    '<span><i class="fa-solid fa-layer-group"></i>' + b.models + ' models</span>' +
+                    '<span><i class="fa-solid fa-globe"></i>' + b.origin + '</span>' +
+                    '</div>' +
+                    '<a class="btn btn-ghost btn-sm" href="' + (b.highlight ? '#' : 'new-cars.html') + '">' +
+                    (b.highlight ? 'Read spotlight' : 'Browse models') + '</a>' +
+                    '</article>';
+            }).join('');
+
+            document.getElementById('spotlightList').innerHTML = BRANDS.filter(function (b) { return b.highlight; })
+                .map(function (b) {
+                    return '<article class="spotlight-item reveal" id="' + b.id + '-detail">' +
+                        '<img src="' + b.image + '" alt="' + b.name + ' vehicles" loading="lazy" decoding="async">' +
+                        '<div>' +
+                        '<span class="eyebrow">' + b.type + '</span>' +
+                        '<h2>' + b.name + ' on CarBreezy</h2>' +
+                        '<p>' + b.blurb + ' Average resale retention is ' + b.resale + ' after three years, with servicing around ' + b.service + '.</p>' +
+                        '<div class="model-chips">' +
+                        b.models_list.map(function (m) { return '<span class="chip">' + m + '</span>'; }).join('') +
+                        '</div>' +
+                        '<a class="btn btn-primary btn-sm" href="new-cars.html">See ' + b.name + ' inventory</a>' +
+                        '</div></article>';
+                }).join('');
+
+            document.getElementById('familyGrid').innerHTML = FAMILIES.map(function (f) {
+                return '<article class="family-card reveal">' +
+                    '<h3><i class="' + f.icon + '"></i>' + f.title + '</h3>' +
+                    '<p class="muted" style="font-size:.9rem;margin-bottom:14px">' + f.text + '</p>' +
+                    '<ul>' + f.rows.map(function (r) {
+                        return '<li>' + r[0] + '<span>' + r[1] + '</span></li>';
+                    }).join('') + '</ul></article>';
+            }).join('');
+
+            document.getElementById('brandGrid').addEventListener('click', function (e) {
+                var card = e.target.closest('.brand-card');
+                if (!card) return;
+                var brand = BRANDS.find(function (b) { return b.id === card.id; });
+                if (brand && brand.highlight) {
+                    e.preventDefault();
+                    document.getElementById(brand.id + '-detail').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

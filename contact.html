@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — CarBreezy</title>
+    <meta name="description" content="Contact CarBreezy — call, email or send a query. Support hours, hub locations and answers to the questions buyers ask most.">
+    <link rel="icon" type="image/png" href="assets/logo-160.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/contact.min.css">
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/site.min.js" defer></script>
+</head>
+<body>
+<div class="cb-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="wrap-wide header-inner">
+            <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+            <nav class="nav" id="primaryNav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="new-cars.html">New Cars</a>
+                <a href="used-cars.html">Used Cars</a>
+                <a href="brands.html">Brands</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <a class="btn btn-primary btn-sm" href="#form">Send a query</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero" style="--page-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1800&q=80');">
+            <div class="wrap-wide">
+                <span class="eyebrow">We answer</span>
+                <h1 class="display">Talk to a person, not a queue</h1>
+                <p class="lead">Every enquiry is handled by a specialist who knows the inventory.
+                    Median first response is under two hours during opening times.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a> <span>/</span> <span>Contact</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Hub map -->
+        <section class="section-tight">
+            <div class="map-section reveal">
+                <div class="map-card">
+                    <iframe
+                        class="map-frame"
+                        title="CarBreezy hub locations"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=66.82%2C24.76%2C67.18%2C24.96&amp;layer=mapnik&amp;marker=24.8607%2C67.0011"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <div class="map-topbar">
+                        <span class="chip chip-live chip-dot">4 hubs open</span>
+                        <a class="btn btn-ghost btn-sm" href="https://www.openstreetmap.org/#map=12/24.8607/67.0011" target="_blank" rel="noopener">
+                            Open full map <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="map-caption">
+                        <h2 class="h3">Find your nearest hub</h2>
+                        <p>Karachi, Pakistan · Birmingham · London · Leeds — with insured delivery to all 50 states,
+                            averaging 4 working days door to door.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact methods -->
+        <section class="section-tight">
+            <div class="wrap-wide">
+                <div class="contact-grid reveal" id="contactGrid"></div>
+            </div>
+        </section>
+
+        <!-- Form -->
+        <section class="section" id="form">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Send a message</span>
+                        <h2 class="h2">Tell us what you need</h2>
+                        <p class="lead">Tell us your budget, location and timeline — we will come back with specific cars, not a brochure.</p>
+                    </div>
+                </div>
+
+                <div class="form-layout">
+                    <form class="form-card reveal" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <label class="field">
+                                <span>Full name</span>
+                                <input type="text" name="name" placeholder="Jordan Ellis" required>
+                                <em class="field-error">Please tell us your name.</em>
+                            </label>
+                            <label class="field">
+                                <span>Email address</span>
+                                <input type="email" name="email" placeholder="jordan@example.com" required>
+                                <em class="field-error">Please enter a valid email address.</em>
+                            </label>
+                        </div>
+
+                        <div class="form-row">
+                            <label class="field">
+                                <span>Phone (optional)</span>
+                                <input type="tel" name="phone" placeholder="+44 7700 900000">
+                            </label>
+                            <label class="field">
+                                <span>Budget</span>
+                                <select name="budget">
+                                    <option value="">Select a range</option>
+                                    <option>Under $25,000</option>
+                                    <option>$25,000 – $45,000</option>
+                                    <option>$45,000 – $70,000</option>
+                                    <option>Above $70,000</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <p style="font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);font-weight:700;margin-bottom:10px">
+                            What do you need?
+                        </p>
+                        <div class="radio-set">
+                            <label class="radio"><input type="radio" name="topic" value="Buying" checked> Buying advice</label>
+                            <label class="radio"><input type="radio" name="topic" value="Test drive"> Test drive</label>
+                            <label class="radio"><input type="radio" name="topic" value="Finance"> Finance</label>
+                            <label class="radio"><input type="radio" name="topic" value="Sell"> Sell my car</label>
+                        </div>
+
+                        <label class="field">
+                            <span>Message</span>
+                            <textarea name="message" placeholder="Commute, family size, what you drive now…" required></textarea>
+                            <em class="field-error">A short message helps us reply usefully.</em>
+                        </label>
+
+                        <button class="btn btn-primary btn-block" type="submit">Send enquiry</button>
+                        <p class="form-note">We never share your details. Median response time: 1 h 48 m.</p>
+                        <div class="form-status" id="formStatus" role="status"></div>
+                    </form>
+
+                    <div class="info-stack">
+                        <div class="info-card reveal">
+                            <h3>Support hours</h3>
+                            <div class="hours" id="hours"></div>
+                        </div>
+                        <div class="info-card reveal">
+                            <h3>Direct lines</h3>
+                            <p class="muted" style="font-size:.92rem">
+                                Sales specialists: <strong style="color:var(--text)">+1 (800) 555-BREEZY</strong><br>
+                                Warranty team: <strong style="color:var(--text)">+1 (800) 555-CARE</strong><br>
+                                Email: <strong style="color:var(--text)">support@carbreezy.com</strong>
+                            </p>
+                            <a class="btn btn-ghost btn-sm" href="reviews.html" style="margin-top:16px">See buyer reviews</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate details -->
+        <section class="section-tight" style="padding-bottom: 0;">
+            <div class="wrap-wide">
+                <div class="card card-pad reveal" style="background: linear-gradient(135deg, rgba(200,169,107,0.06), transparent); border: 1px solid var(--accent-line);">
+                    <h2 class="h3" style="margin-bottom: 12px; color: var(--accent-text);">Corporate Headquarters</h2>
+                    <p style="color: var(--text-soft); font-size: 0.95rem; line-height: 1.6; max-width: 60ch;">
+                        <strong>CarBreezy Ltd.</strong><br>
+                        Karachi, Pakistan<br><br>
+                        Registration Number: 12948302<br>
+                        VAT ID: GB 982 374 881
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">FAQ</span>
+                        <h2 class="h2">Questions buyers ask most</h2>
+                    </div>
+                </div>
+                <div class="faq reveal" data-accordion id="faqList"></div>
+            </div>
+        </section>
+
+        <!-- Locations -->
+        <section class="section" id="locations">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Locations</span>
+                        <h2 class="h2">Hubs and delivery coverage</h2>
+                    </div>
+                </div>
+                <div class="contact-grid reveal" id="locationGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap-wide">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+                    <p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="new-cars.html">New cars</a></li>
+                        <li><a href="used-cars.html">Used cars</a></li>
+                        <li><a href="brands.html">Brands</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="contact.html#form">Request a callback</a></li>
+                        <li><a href="contact.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+                <span>Inspections · Financing · Nationwide delivery</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------- Page data ---------- */
+        var CONTACTS = [
+            { icon: 'fa-solid fa-phone', title: 'Call us', text: 'Direct line to a sales specialist, no IVR maze.', link: '+1 (800) 555-BREEZY', href: 'tel:+18005552739' },
+            { icon: 'fa-solid fa-envelope', title: 'Email us', text: 'Replies within one working day, in full.', link: 'support@carbreezy.com', href: 'mailto:support@carbreezy.com' },
+            { icon: 'fa-solid fa-comments', title: 'Live chat', text: 'Weekdays 08:00–20:00, weekends 10:00–16:00.', link: 'Start a chat', href: '#form' },
+            { icon: 'fa-solid fa-car-side', title: 'Book a test drive', text: 'Pick a hub and a time that suits you.', link: 'Arrange a viewing', href: '#form' }
+        ];
+
+        var HOURS = [
+            { day: 'Monday – Friday', time: '08:00 – 20:00' },
+            { day: 'Saturday', time: '10:00 – 16:00' },
+            { day: 'Sunday', time: 'Closed', closed: true },
+            { day: 'Public holidays', time: 'Closed', closed: true }
+        ];
+
+        var FAQS = [
+            { q: 'Does CarBreezy charge a buyer fee?', a: 'No. The price you see includes taxes, registration support and delivery. Dealers pay a listing fee, so our incentive is to get you the right car rather than to sell you extras.' },
+            { q: 'Can I test drive before committing?', a: 'Yes. Every listing supports a free 30-minute test drive at the nearest hub, and we can often extend it on request. Nothing is charged and no deposit is required to drive.' },
+            { q: 'How is the inspection report produced?', a: 'A 120-point mechanical and cosmetic inspection by a certified inspector, uploaded as a scored report with photographs. Our criteria are published in full so you can check any item yourself.' },
+            { q: 'What does the warranty cover?', a: 'Certified used vehicles include a 24-month mechanical warranty and 12 months of roadside assistance. New cars carry the full manufacturer warranty, typically 3 to 7 years.' },
+            { q: 'Do you offer financing?', a: 'We work with a panel of lenders for pre-approval, typically from 4.9% APR for qualified buyers. Balloon and lease structures are available on most new models. Pre-approval does not affect your credit score.' },
+            { q: 'How long does delivery take?', a: 'Local hub collection is usually same day. Insured nationwide transport averages four working days door to door, with live tracking from the moment the vehicle leaves the hub.' },
+            { q: 'Can I sell my car through CarBreezy?', a: 'Yes. Send us the registration, mileage and service history for an instant valuation, then choose either a trade-in against a purchase or a straight sale with same-day payment.' }
+        ];
+
+        var LOCATIONS = [
+            { icon: 'fa-solid fa-city', title: 'Karachi, Pakistan Hub', text: 'Clifton · 6 viewing bays · 2 finance desks', link: 'Mon–Sat, 08:00–19:00' },
+            { icon: 'fa-solid fa-city', title: 'Birmingham Hub', text: 'Brindleyplace · 4 viewing bays · test drives daily', link: 'Mon–Sat, 09:00–18:00' },
+            { icon: 'fa-solid fa-city', title: 'London Hub', text: 'Shoreditch · flagship showroom · 8 viewing bays', link: 'Mon–Sun, 09:00–20:00' },
+            { icon: 'fa-solid fa-city', title: 'Leeds Hub', text: 'Clarendon Way · collection and handover point', link: 'Mon–Sat, 09:00–17:00' }
+        ];
+
+        function validateForm(form) {
+            var valid = true;
+
+            form.querySelectorAll('input[required], textarea[required]').forEach(function (input) {
+                var wrapper = input.closest('.field');
+                var value = input.value.trim();
+                var ok = value.length > 1;
+
+                if (input.type === 'email') {
+                    ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+                }
+
+                wrapper.classList.toggle('invalid', !ok);
+                if (!ok) valid = false;
+            });
+
+            return valid;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('contactGrid').innerHTML = CONTACTS.map(function (c) {
+                return '<article class="contact-card reveal"><i class="' + c.icon + '"></i>' +
+                    '<h3>' + c.title + '</h3><p>' + c.text + '</p>' +
+                    '<a href="' + c.href + '">' + c.link + '</a></article>';
+            }).join('');
+
+            document.getElementById('hours').innerHTML = HOURS.map(function (h) {
+                return '<div class="' + (h.closed ? 'closed' : '') + '"><span>' + h.day + '</span>' +
+                    '<strong>' + h.time + '</strong></div>';
+            }).join('');
+
+            document.getElementById('faqList').innerHTML = FAQS.map(function (f) {
+                return '<div class="acc-item"><button class="acc-btn" type="button" aria-expanded="false">' +
+                    f.q + '<i class="fa-solid fa-plus"></i></button>' +
+                    '<div class="acc-panel"><p>' + f.a + '</p></div></div>';
+            }).join('');
+
+            document.getElementById('locationGrid').innerHTML = LOCATIONS.map(function (l) {
+                return '<article class="contact-card reveal"><i class="' + l.icon + '"></i>' +
+                    '<h3>' + l.title + '</h3><p>' + l.text + '</p>' +
+                    '<span class="chip">' + l.link + '</span></article>';
+            }).join('');
+
+            var form = document.getElementById('contactForm');
+            var status = document.getElementById('formStatus');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!validateForm(form)) {
+                    status.classList.remove('show');
+                    status.textContent = '';
+                    return;
+                }
+
+                var name = form.name.value.trim().split(' ')[0];
+                var topic = form.querySelector('input[name="topic"]:checked').value;
+
+                status.textContent = 'Thanks ' + name + ' — your ' + topic.toLowerCase() +
+                    ' enquiry is with a specialist. Expect a reply within two working hours.';
+                status.classList.add('show');
+                form.reset();
+            });
+
+            form.addEventListener('input', function (e) {
+                var wrapper = e.target.closest('.field');
+                if (wrapper) wrapper.classList.remove('invalid');
+            });
+
+            if (window.CarBreezy) window.CarBreezy.observeReveals();
+        });
+    </script>
+</body>
+</html>

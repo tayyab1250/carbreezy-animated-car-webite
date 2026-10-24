@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Cars — CarBreezy</title>
+    <meta name="description" content="Browse brand-new cars on CarBreezy. Filter by body type, fuel and price, compare specifications and estimate monthly payments.">
+    <link rel="icon" type="image/png" href="assets/logo-160.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/new-cars.min.css">
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/site.min.js" defer></script>
+</head>
+<body>
+<div class="cb-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="wrap-wide header-inner">
+            <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+            <nav class="nav" id="primaryNav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="new-cars.html" class="active">New Cars</a>
+                <a href="used-cars.html">Used Cars</a>
+                <a href="brands.html">Brands</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <a class="btn btn-primary btn-sm" href="contact.html">Book a test drive</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page hero -->
+        <section class="page-hero" style="--page-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1800&q=80');">
+            <div class="wrap-wide">
+                <span class="eyebrow">Brand new inventory</span>
+                <h1 class="display">New cars, zero guesswork</h1>
+                <p class="lead">Every vehicle below is factory-fresh, warranty backed and delivered with a full
+                    specification sheet, ownership estimate and market price benchmark.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a> <span>/</span> <span>New Cars</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="section-tight">
+            <div class="wrap-wide">
+                <div class="stat-row reveal">
+                    <div class="stat"><strong>4,120</strong><span>New listings in stock</span></div>
+                    <div class="stat"><strong>36</strong><span>Brands available</span></div>
+                    <div class="stat"><strong>7 yr</strong><span>Factory warranty</span></div>
+                    <div class="stat"><strong>48 h</strong><span>Average delivery time</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inventory -->
+        <section class="section" id="inventory">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Inventory</span>
+                        <h2 class="h2">Filter the range</h2>
+                    </div>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="filter-group" id="bodyFilters">
+                        <span>Body</span>
+                    </div>
+                    <div class="filter-group" id="fuelFilters">
+                        <span>Fuel</span>
+                    </div>
+                    <div class="filter-group" id="priceFilters">
+                        <span>Price</span>
+                    </div>
+                    <p class="filter-count"><strong id="resultCount">0</strong> vehicles match</p>
+                </div>
+
+                <div class="inventory-grid" id="inventoryGrid"></div>
+            </div>
+        </section>
+
+        <!-- Comparison -->
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Side by side</span>
+                        <h2 class="h2">Compare popular models</h2>
+                        <p class="lead">Running costs matter more than list price. Here is how the five most-searched new models compare.</p>
+                    </div>
+                </div>
+                <div class="table-scroll reveal">
+                    <table class="compare">
+                        <thead>
+                            <tr>
+                                <th scope="col">Model</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Power</th>
+                                <th scope="col">0–100 km/h</th>
+                                <th scope="col">Fuel / range</th>
+                                <th scope="col">Est. monthly</th>
+                            </tr>
+                        </thead>
+                        <tbody id="compareBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Finance calculator -->
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="finance reveal">
+                    <div>
+                        <span class="eyebrow">Finance</span>
+                        <h2 class="h2">Estimate your payment</h2>
+                        <ul class="finance-list">
+                            <li><i class="fa-solid fa-circle-check"></i><span>Pre-approved rates from 4.9% APR for qualified buyers.</span></li>
+                            <li><i class="fa-solid fa-circle-check"></i><span>Balloon and lease structures available on every model.</span></li>
+                            <li><i class="fa-solid fa-circle-check"></i><span>No application fee and no obligation to proceed.</span></li>
+                        </ul>
+                    </div>
+                    <div class="calc">
+                        <label class="field" style="margin:0">
+                            <span>Vehicle price — <b id="priceLabel">$45,000</b></span>
+                            <input type="range" id="priceRange" min="18000" max="120000" step="1000" value="45000">
+                        </label>
+                        <label class="field" style="margin:0">
+                            <span>Down payment — <b id="downLabel">$6,000</b></span>
+                            <input type="range" id="downRange" min="0" max="40000" step="500" value="6000">
+                        </label>
+                        <label class="field" style="margin:0">
+                            <span>Term</span>
+                            <select id="termSelect">
+                                <option value="36">36 months</option>
+                                <option value="48" selected>48 months</option>
+                                <option value="60">60 months</option>
+                                <option value="72">72 months</option>
+                            </select>
+                        </label>
+                        <div class="calc-out">
+                            <span>Estimated monthly payment</span>
+                            <strong id="monthlyOut">$0</strong>
+                        </div>
+                        <p class="form-note">Indicative only. Final rate depends on credit profile and lender approval.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="card card-pad reveal" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+                    <div>
+                        <h2 class="h3">Not sure which one fits?</h2>
+                        <p class="muted">Send us your budget and commute — we will return a three-car shortlist.</p>
+                    </div>
+                    <a class="btn btn-primary" href="contact.html">Request a shortlist</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Full-page vehicle detail -->
+    <div class="drawer-backdrop" id="drawerBackdrop">
+        <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+            <div class="drawer-head">
+                <div>
+                    <h2 id="drawerTitle">Vehicle</h2>
+                    <p id="drawerSub">Full specification</p>
+                </div>
+                <button class="drawer-close" type="button" id="drawerClose" aria-label="Close details">&times;</button>
+            </div>
+            <div class="drawer-body" id="drawerBody"></div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="wrap-wide">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+                    <p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="new-cars.html">New cars</a></li>
+                        <li><a href="used-cars.html">Used cars</a></li>
+                        <li><a href="brands.html">Brands</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="contact.html#form">Request a callback</a></li>
+                        <li><a href="contact.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+                <span>Inspections · Financing · Nationwide delivery</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------- Page data ---------- */
+        var VEHICLES = [
+            {
+                id: 'nc-01', name: 'Aero Roadster Convertible', brand: 'Aero', body: 'Convertible', fuel: 'Petrol',
+                price: 64500, power: '385 HP', accel: '4.9 s', range: '520 km', gearbox: '8-speed auto', drive: 'RWD',
+                warranty: '5 years', warrantyKm: '80,000 km', stock: '12 units', rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Adaptive LED', 'Retractable soft top', 'Nappa leather', 'Bose 10-speaker']
+            },
+            {
+                id: 'nc-02', name: 'Volt E-Drive GT', brand: 'Volt', body: 'Sedan', fuel: 'Electric',
+                price: 48900, power: '480 HP', accel: '3.6 s', range: '620 km', gearbox: 'Single speed', drive: 'AWD',
+                warranty: '8 years', warrantyKm: '160,000 km', stock: '24 units', rating: 4.9,
+                image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['15-inch OLED', 'Level 2 autonomy', 'Heat pump', 'Active rear wing']
+            },
+            {
+                id: 'nc-03', name: 'Horizon Cruiser SUV', brand: 'Horizon', body: 'SUV', fuel: 'Petrol',
+                price: 53800, power: '295 HP', accel: '6.1 s', range: '640 km', gearbox: '9-speed auto', drive: 'AWD',
+                warranty: '5 years', warrantyKm: '100,000 km', stock: '18 units', rating: 4.7,
+                image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['7 seats', 'Dual 10-inch displays', '210 mm clearance', 'Hands-free tailgate']
+            },
+            {
+                id: 'nc-04', name: 'Apex Velocity Sedan', brand: 'Apex', body: 'Sedan', fuel: 'Petrol',
+                price: 42000, power: '255 HP', accel: '6.4 s', range: '610 km', gearbox: '7-speed DCT', drive: 'FWD',
+                warranty: '5 years', warrantyKm: '90,000 km', stock: '31 units', rating: 4.6,
+                image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Panoramic roof', 'Chrome mesh grille', 'Dual-zone climate', 'Heated seats']
+            },
+            {
+                id: 'nc-05', name: 'Summit Trek X7', brand: 'Summit', body: 'SUV', fuel: 'Diesel',
+                price: 47200, power: '310 HP', accel: '7.0 s', range: '780 km', gearbox: '8-speed auto', drive: '4WD',
+                warranty: '7 years', warrantyKm: '150,000 km', stock: '9 units', rating: 4.7,
+                image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Tow rating 2,500 kg', 'Roof rails', 'Ventilated seats', '360° camera']
+            },
+            {
+                id: 'nc-06', name: 'Urban Sprint Hatchback', brand: 'Urban', body: 'Hatchback', fuel: 'Petrol',
+                price: 21900, power: '158 HP', accel: '7.8 s', range: '540 km', gearbox: '6-speed manual', drive: 'FWD',
+                warranty: '5 years', warrantyKm: '80,000 km', stock: '44 units', rating: 4.5,
+                image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Sport wing', '16-inch alloys', 'Apple CarPlay', 'Rear camera']
+            },
+            {
+                id: 'nc-07', name: 'Vantage GT Coupe', brand: 'Apex', body: 'Coupe', fuel: 'Petrol',
+                price: 58900, power: '420 HP', accel: '4.4 s', range: '580 km', gearbox: '8-speed auto', drive: 'RWD',
+                warranty: '5 years', warrantyKm: '100,000 km', stock: '6 units', rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Sport exhaust', 'Brembo brakes', 'Carbon roof', 'Launch control']
+            },
+            {
+                id: 'nc-08', name: 'Lumen City EV Hatch', brand: 'Lumen', body: 'Hatchback', fuel: 'Electric',
+                price: 34900, power: '230 HP', accel: '6.2 s', range: '480 km', gearbox: 'Single speed', drive: 'FWD',
+                warranty: '8 years', warrantyKm: '160,000 km', stock: '22 units', rating: 4.6,
+                image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Heat pump', 'Solar roof', 'V2L charging', 'Digital cockpit']
+            },
+            {
+                id: 'nc-09', name: 'Titan Crew Pickup', brand: 'Titan', body: 'Truck', fuel: 'Diesel',
+                price: 62400, power: '350 HP', accel: '6.8 s', range: '900 km', gearbox: '10-speed auto', drive: '4WD',
+                warranty: '5 years', warrantyKm: '120,000 km', stock: '8 units', rating: 4.7,
+                image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Tow rating 4,000 kg', 'Bed liner', 'Trailering mirrors', 'Diff lock']
+            },
+            {
+                id: 'nc-10', name: 'Vega Performance Hybrid', brand: 'Vega', body: 'Sedan', fuel: 'Hybrid',
+                price: 46500, power: '305 HP', accel: '5.5 s', range: '1,050 km', gearbox: 'e-CVT', drive: 'AWD',
+                warranty: '7 years', warrantyKm: '150,000 km', stock: '15 units', rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['1.9 L/100 km', 'Solar glass', 'Bose audio', 'Wireless charging']
+            },
+            {
+                id: 'nc-11', name: 'Aurora GT-R Coupé', brand: 'Aurora', body: 'Coupe', fuel: 'Petrol',
+                price: 72400, power: '460 HP', accel: '4.1 s', range: '560 km', gearbox: '8-speed auto', drive: 'AWD',
+                warranty: '5 years', warrantyKm: '100,000 km', stock: '7 units', rating: 4.9,
+                image: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Active aerodynamics', 'Carbon ceramics', 'Launch control', 'Track telemetry']
+            },
+            {
+                id: 'nc-12', name: 'Nordwind Estate Touring', brand: 'Nordwind', body: 'Estate', fuel: 'Diesel',
+                price: 43600, power: '198 HP', accel: '8.3 s', range: '1,120 km', gearbox: '8-speed auto', drive: 'AWD',
+                warranty: '7 years', warrantyKm: '150,000 km', stock: '19 units', rating: 4.7,
+                image: 'https://images.unsplash.com/photo-1568844293986-8d0400bd4745?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['1,820 L load bay', 'Adaptive air suspension', 'Hands-free tailgate', 'Winter package']
+            },
+            {
+                id: 'nc-13', name: 'Marlin Roadster GT', brand: 'Marlin', body: 'Convertible', fuel: 'Petrol',
+                price: 58100, power: '340 HP', accel: '5.2 s', range: '600 km', gearbox: '7-speed DCT', drive: 'RWD',
+                warranty: '5 years', warrantyKm: '90,000 km', stock: '11 units', rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Retractable hard top', 'Burmester audio', 'Sport Chrono', 'Sport exhaust']
+            },
+            {
+                id: 'nc-14', name: 'Onyx M4 Competition', brand: 'Onyx', body: 'Sedan', fuel: 'Petrol',
+                price: 76800, power: '510 HP', accel: '3.9 s', range: '540 km', gearbox: '8-speed auto', drive: 'RWD',
+                warranty: '5 years', warrantyKm: '100,000 km', stock: '5 units', rating: 4.9,
+                image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Carbon bucket seats', 'M Mode', 'Adaptive M suspension', 'Harman Kardon']
+            },
+            {
+                id: 'nc-15', name: 'Kestrel Adventure SUV', brand: 'Kestrel', body: 'SUV', fuel: 'Hybrid',
+                price: 54900, power: '286 HP', accel: '6.0 s', range: '1,020 km', gearbox: 'e-CVT', drive: 'AWD',
+                warranty: '7 years', warrantyKm: '150,000 km', stock: '16 units', rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['5.2 L/100 km', 'Terrain response', '360° camera', 'Hands-free power tailgate']
+            },
+            {
+                id: 'nc-16', name: 'Valencienne Nocturne GT', brand: 'Valencienne', body: 'Coupe', fuel: 'Petrol',
+                price: 112000, power: '612 HP', accel: '3.4 s', range: '510 km', gearbox: '7-speed DCT', drive: 'RWD',
+                warranty: '5 years', warrantyKm: '100,000 km', stock: '3 units', rating: 5.0,
+                image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['V12 engine', 'Carbon tub', 'Ceramic brakes', 'Bespoke interior']
+            },
+            {
+                id: 'nc-17', name: 'Ardenne Sovereign SUV', brand: 'Ardenne', body: 'SUV', fuel: 'Hybrid',
+                price: 96500, power: '540 HP', accel: '4.8 s', range: '780 km', gearbox: 'e-CVT', drive: 'AWD',
+                warranty: '7 years', warrantyKm: '150,000 km', stock: '4 units', rating: 4.9,
+                image: 'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['4.8 L/100 km', 'Executive rear cabin', 'Air suspension', 'Night vision']
+            },
+            {
+                id: 'nc-18', name: 'Corvina Tipo 9 R', brand: 'Corvina', body: 'Coupe', fuel: 'Petrol',
+                price: 84900, power: '471 HP', accel: '4.3 s', range: '545 km', gearbox: '7-speed manual', drive: 'RWD',
+                warranty: '5 years', warrantyKm: '90,000 km', stock: '5 units', rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['6-speed manual', 'Limited-slip diff', 'Carbon floor', 'Track pack']
+            },
+            {
+                id: 'nc-19', name: 'Solstice Imperator Limo', brand: 'Solstice', body: 'Sedan', fuel: 'Petrol',
+                price: 88400, power: '498 HP', accel: '4.6 s', range: '620 km', gearbox: '9-speed auto', drive: 'AWD',
+                warranty: '5 years', warrantyKm: '120,000 km', stock: '6 units', rating: 4.9,
+                image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1000&q=80',
+                highlights: ['Executive reclining seats', 'Massage + fridge', '22-speaker audio', 'Privacy glass']
+            }
+        ];
+
+        var COMPARE = [
+            { model: 'Volt E-Drive GT', price: '$48,900', power: '480 HP', accel: '3.6 s', fuel: '620 km electric', monthly: '$742' },
+            { model: 'Aero Roadster Convertible', price: '$64,500', power: '385 HP', accel: '4.9 s', fuel: '9.4 L/100 km', monthly: '$915' },
+            { model: 'Apex Velocity Sedan', price: '$42,000', power: '255 HP', accel: '6.4 s', fuel: '6.8 L/100 km', monthly: '$636' },
+            { model: 'Lumen City EV Hatch', price: '$34,900', power: '230 HP', accel: '6.2 s', fuel: '480 km electric', monthly: '$561' },
+            { model: 'Urban Sprint Hatchback', price: '$21,900', power: '158 HP', accel: '7.8 s', fuel: '5.9 L/100 km', monthly: '$371' }
+        ];
+
+        var BODY_FILTERS = ['All', 'Sedan', 'SUV', 'Hatchback', 'Convertible', 'Coupe', 'Truck'];
+        var FUEL_FILTERS = ['All', 'Petrol', 'Diesel', 'Hybrid', 'Electric'];
+        var PRICE_FILTERS = ['Any', 'Under $30k', '$30k – $50k', '$50k – $80k', 'Above $80k'];
+
+        var state = { body: 'All', fuel: 'All', price: 'Any' };
+
+        function money(value) {
+            return '$' + value.toLocaleString('en-US');
+        }
+
+        function matchPrice(v) {
+            if (state.price === 'Any') return true;
+            if (state.price === 'Under $30k') return v.price < 30000;
+            if (state.price === '$30k – $50k') return v.price >= 30000 && v.price < 50000;
+            if (state.price === '$50k – $80k') return v.price >= 50000 && v.price < 80000;
+            return v.price >= 80000;
+        }
+
+        var activeBrand = new URLSearchParams(window.location.search).get('brand');
+        function matches(v) {
+            var brandMatch = activeBrand ? v.brand.toLowerCase() === activeBrand.toLowerCase() : true;
+            return brandMatch &&
+                (state.body === 'All' || v.body === state.body) &&
+                (state.fuel === 'All' || v.fuel === state.fuel) &&
+                matchPrice(v);
+        }
+
+        function cardTemplate(v) {
+            return '<article class="card vehicle reveal" data-id="' + v.id + '" tabindex="0" role="button" ' +
+                'aria-label="View details for ' + v.name + '">' +
+                '<div class="car-media">' +
+                '<div class="vehicle-tags"><span class="chip chip-accent">' + v.fuel + '</span></div>' +
+                '<img src="' + v.image + '" alt="' + v.name + '" loading="lazy" width="800" height="500" decoding="async">' +
+                '<div class="vehicle-badges">' +
+                '<span class="mini-badge">' + v.stock + ' in stock</span>' +
+                '<span class="mini-badge">★ ' + v.rating + '</span>' +
+                '</div></div>' +
+                '<div class="vehicle-body">' +
+                '<div class="vehicle-title"><h3>' + v.name + '</h3><p>' + v.brand + ' · ' + v.body + '</p></div>' +
+                '<div class="vehicle-price">' + money(v.price) + '<small>incl. taxes &amp; delivery</small></div>' +
+                '<div class="spec-grid">' +
+                '<div><i class="fa-solid fa-bolt"></i>' + v.power + '</div>' +
+                '<div><i class="fa-solid fa-gauge-high"></i>' + v.accel + ' 0–100</div>' +
+                '<div><i class="fa-solid fa-gears"></i>' + v.gearbox + '</div>' +
+                '<div><i class="fa-solid fa-road"></i>' + v.drive + '</div>' +
+                '</div>' +
+                '<div class="vehicle-actions">' +
+                '<button class="btn btn-primary btn-sm" type="button">Reserve</button>' +
+                '<button class="btn btn-ghost btn-sm" type="button">Finance</button>' +
+                '</div>' +
+                '</div></article>';
+        }
+
+        function renderFilters() {
+            document.getElementById('bodyFilters').innerHTML =
+                '<span>Body</span>' + BODY_FILTERS.map(function (b) {
+                    return '<button class="filter-chip' + (b === state.body ? ' active' : '') +
+                        '" type="button" data-group="body" data-value="' + b + '">' + b + '</button>';
+                }).join('');
+
+            document.getElementById('fuelFilters').innerHTML =
+                '<span>Fuel</span>' + FUEL_FILTERS.map(function (f) {
+                    return '<button class="filter-chip' + (f === state.fuel ? ' active' : '') +
+                        '" type="button" data-group="fuel" data-value="' + f + '">' + f + '</button>';
+                }).join('');
+
+            document.getElementById('priceFilters').innerHTML =
+                '<span>Price</span>' + PRICE_FILTERS.map(function (p) {
+                    return '<button class="filter-chip' + (p === state.price ? ' active' : '') +
+                        '" type="button" data-group="price" data-value="' + p + '">' + p + '</button>';
+                }).join('');
+        }
+
+        function renderGrid() {
+            var list = VEHICLES.filter(matches);
+            var grid = document.getElementById('inventoryGrid');
+
+            grid.innerHTML = list.length
+                ? list.map(cardTemplate).join('')
+                : '<div class="empty-state"><h3 class="h3">No match yet</h3>' +
+                  '<p>Try widening the fuel or price filter — or tell us what you are looking for.</p>' +
+                  '<a class="btn btn-ghost btn-sm" href="contact.html">Ask a specialist</a></div>';
+
+            document.getElementById('resultCount').textContent = list.length;
+            var countEl = document.getElementById('resultCount');
+            if (activeBrand) {
+                countEl.nextSibling.textContent = " " + activeBrand + " vehicles match";
+            } else {
+                countEl.nextSibling.textContent = " vehicles match";
+            }
+
+            if (window.CarBreezy) window.CarBreezy.observeReveals();
+        }
+
+        function openDrawer(id) {
+            var v = VEHICLES.find(function (item) { return item.id === id; });
+            if (!v) return;
+
+            document.getElementById('drawerTitle').textContent = v.name;
+            document.getElementById('drawerSub').textContent = v.brand + ' · ' + v.body + ' · ' + v.fuel;
+
+            var rows = [
+                ['Price', money(v.price)],
+                ['Power', v.power],
+                ['0–100 km/h', v.accel + ' s'],
+                ['Range / economy', v.range],
+                ['Transmission', v.gearbox],
+                ['Drivetrain', v.drive],
+                ['Warranty', v.warranty + ' / ' + v.warrantyKm],
+                ['Availability', v.stock]
+            ];
+
+            document.getElementById('drawerBody').innerHTML =
+                '<div class="drawer-hero"><img src="' + v.image + '" alt="' + v.name + '" decoding="async">' +
+                '<div class="drawer-hero-tags">' +
+                '<span class="chip chip-accent">' + v.fuel + '</span>' +
+                '<span class="chip">' + v.stock + ' in stock</span>' +
+                '<span class="chip">★ ' + v.rating + '</span>' +
+                '</div></div>' +
+
+                '<div class="drawer-cols">' +
+                '<div>' +
+                '<div class="spec-table">' + rows.map(function (r) {
+                    return '<div><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>';
+                }).join('') + '</div>' +
+                '<div style="margin-top:22px"><h3 class="h3">Highlight equipment</h3>' +
+                '<div class="filter-group" style="margin-top:12px">' +
+                v.highlights.map(function (h) { return '<span class="chip">' + h + '</span>'; }).join('') +
+                '</div></div>' +
+                '</div>' +
+
+                '<div>' +
+                '<div class="drawer-price">' + money(v.price) + '<small>incl. taxes, registration &amp; delivery</small></div>' +
+                '<p class="muted" style="margin:14px 0;font-size:.94rem">' + v.name + ' from ' + v.brand +
+                ' — supplied new through the CarBreezy network with a full manufacturer warranty and a ' +
+                'market-price benchmark on file.</p>' +
+                '<div class="drawer-actions">' +
+                '<a class="btn btn-primary" href="contact.html">Reserve this ' + v.body.toLowerCase() + '</a>' +
+                '<a class="btn btn-ghost" href="contact.html">Book a test drive</a>' +
+                '</div>' +
+                '<a class="btn btn-ghost btn-block" style="margin-top:10px" href="used-cars.html">See similar used cars</a>' +
+                '</div>' +
+                '</div>';
+
+            document.getElementById('drawerBackdrop').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('drawerBackdrop').scrollTop = 0;
+            var drawerEl = document.getElementById('drawerBackdrop').querySelector('.drawer');
+            if (drawerEl) drawerEl.scrollTop = 0;
+            document.getElementById('drawerClose').focus();
+        }
+
+        function closeDrawer() {
+            document.getElementById('drawerBackdrop').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function initCalculator() {
+            var price = document.getElementById('priceRange');
+            var down = document.getElementById('downRange');
+            var term = document.getElementById('termSelect');
+            var out = document.getElementById('monthlyOut');
+            var rate = 0.049 / 12;
+
+            function update() {
+                document.getElementById('priceLabel').textContent = money(+price.value);
+                document.getElementById('downLabel').textContent = money(+down.value);
+
+                var principal = Math.max(price.value - down.value, 1000);
+                var n = +term.value;
+                var monthly = principal * rate / (1 - Math.pow(1 + rate, -n));
+                out.textContent = money(Math.round(monthly));
+            }
+
+            [price, down, term].forEach(function (el) { el.addEventListener('input', update); });
+            update();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderFilters();
+            renderGrid();
+            initCalculator();
+
+            document.getElementById('compareBody').innerHTML = COMPARE.map(function (row) {
+                return '<tr><td><strong>' + row.model + '</strong></td><td>' + row.price + '</td><td>' +
+                    row.power + '</td><td>' + row.accel + '</td><td>' + row.fuel + '</td><td>' +
+                    row.monthly + '</td></tr>';
+            }).join('');
+
+            document.querySelectorAll('.filter-group').forEach(function (group) {
+                group.addEventListener('click', function (e) {
+                    var chip = e.target.closest('.filter-chip');
+                    if (!chip) return;
+                    state[chip.dataset.group] = chip.dataset.value;
+                    renderFilters();
+                    renderGrid();
+                });
+            });
+
+            var grid = document.getElementById('inventoryGrid');
+            grid.addEventListener('click', function (e) {
+                var card = e.target.closest('.vehicle');
+                if (card) openDrawer(card.dataset.id);
+            });
+            grid.addEventListener('keydown', function (e) {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                var card = e.target.closest('.vehicle');
+                if (!card) return;
+                e.preventDefault();
+                openDrawer(card.dataset.id);
+            });
+
+            document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+            document.getElementById('drawerBackdrop').addEventListener('click', function (e) {
+                if (e.target === e.currentTarget) closeDrawer();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeDrawer();
+            });
+
+            // Deep link: new-cars.html#nc-03 opens that vehicle straight away
+            function openFromHash() {
+                var id = (window.location.hash || '').replace('#', '');
+                if (!id) return;
+
+                var match = VEHICLES.find(function (v) { return v.id === id; });
+                if (!match) return;
+
+                // Clear any active filters that would hide the vehicle
+                state.body = 'All';
+                state.fuel = 'All';
+                state.price = 'Any';
+                renderFilters();
+                renderGrid();
+                openDrawer(id);
+            }
+
+            openFromHash();
+            window.addEventListener('hashchange', openFromHash);
+        });
+    </script>
+</body>
+</html>

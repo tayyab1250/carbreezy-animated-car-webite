@@ -1,0 +1,45 @@
+/* Build helper — run with: npx esbuild css/home.css --minify --outfile=css/home.min.css
+   (and the same for every page CSS + js/site.js)
+
+   NOTE: the HTML pages load the SOURCE files (css/base.css, css/home.css,
+   js/site.js, ...) directly, NOT the .min files. The .min files are unused
+   build artifacts, so editing the sources is enough — no rebuild required.
+   Only js/vendor/lenis.min.js is loaded (vendored Lenis, see below). */
+
+Pages and their CSS pairs (source files loaded by HTML):
+  index.html      -> base.css + carousel.css + frame-hero.css + home.css
+  new-cars.html   -> base.css + new-cars.css
+  used-cars.html  -> base.css + used-cars.css
+  brands.html     -> base.css + brands.css
+  gallery.html    -> base.css + gallery.css
+  reviews.html    -> base.css + reviews.css
+  about.html      -> base.css + about.css
+  contact.html    -> base.css + contact.css
+
+Shared JS bundles (both are deferred):
+  js/site.min.js     -> navigation, scroll reveal, accordions, footer year
+  js/carousel.min.js -> reusable ContentCarousel component (window.ContentCarousel)
+
+ContentCarousel usage (index.html):
+  new ContentCarousel(document.getElementById('featuredCarousel'), {
+      items: FEATURED_CARS,
+      render: carCardTemplate
+  });
+  It reads the existing .carousel / .carousel-nav / .carousel-viewport /
+  [data-carousel-track] markup, so it works with any slide content.
+
+Lenis smooth scroll (every page):
+  npm install lenis  ->  copy node_modules/lenis/dist/lenis.min.js to
+  js/vendor/lenis.min.js (vendored, no CDN dependency).
+  Every page loads js/vendor/lenis.min.js BEFORE js/site.js.
+  The init lives in js/site.js -> initSmoothScroll():
+    - skipped for prefers-reduced-motion or when Lenis fails to load
+    - duration 1.4, easeOutExpo, smoothWheel on, native touch scrolling
+    - index.html: lenis.on('scroll', ScrollTrigger.update) + gsap.ticker
+      drives lenis.raf (official GSAP integration, lagSmoothing(0))
+    - other pages: own requestAnimationFrame loop
+    - same-page anchors (#form) glide via lenis.scrollTo with the
+      scroll-padding-top offset; cross-page hash links ease in on arrival
+  NOTE: css/base.css must NOT set scroll-behavior: smooth — it fights
+  Lenis's rAF scrolling. scroll-padding-top is kept for anchor offsets.
+  Exposed as window.CarBreezy.lenis for other components.

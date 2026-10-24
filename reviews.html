@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews — CarBreezy</title>
+    <meta name="description" content="Read verified CarBreezy customer reviews — 4.9/5 average from more than 9,400 completed purchases across new and used vehicles.">
+    <link rel="icon" type="image/png" href="assets/logo-160.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/reviews.min.css">
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/site.min.js" defer></script>
+</head>
+<body>
+<div class="cb-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="wrap-wide header-inner">
+            <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+            <nav class="nav" id="primaryNav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="new-cars.html">New Cars</a>
+                <a href="used-cars.html">Used Cars</a>
+                <a href="brands.html">Brands</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html" class="active">Reviews</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <a class="btn btn-primary btn-sm" href="new-cars.html">Start shopping</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero" style="--page-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1800&q=80');">
+            <div class="wrap-wide">
+                <span class="eyebrow">Verified buyers only</span>
+                <h1 class="display">What drivers say after the handover</h1>
+                <p class="lead">Reviews are collected only from customers with a completed purchase,
+                    so you are reading about real handovers rather than advertising copy.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a> <span>/</span> <span>Reviews</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Score -->
+        <section class="section-tight">
+            <div class="wrap-wide">
+                <div class="score-panel reveal">
+                    <div class="score-big">
+                        <strong>4.9</strong>
+                        <span class="stars" role="img" aria-label="Rated 4.9 out of 5">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="muted">9,412 verified reviews</span>
+                    </div>
+                    <div>
+                        <div class="bars" id="bars"></div>
+                        <div class="score-tags">
+                            <span class="chip chip-accent"><i class="fa-solid fa-bolt"></i> Fast paperwork</span>
+                            <span class="chip chip-accent"><i class="fa-solid fa-tag"></i> No hidden fees</span>
+                            <span class="chip chip-accent"><i class="fa-solid fa-truck"></i> On-time delivery</span>
+                            <span class="chip chip-live"><i class="fa-solid fa-check"></i> 98% would recommend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spotlight review -->
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="spotlight-quote reveal">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                         alt="Customer collecting their new car" loading="lazy" decoding="async">
+                    <div>
+                        <span class="eyebrow">Review of the month</span>
+                        <blockquote>The whole process felt transparent from the first search to the paperwork.
+                            I compared three SUVs, got the same specification sheet for each, and the price did not
+                            move once I had made an offer.</blockquote>
+                        <div class="quote-source">
+                            <span class="avatar">MR</span>
+                            <div>
+                                <strong>Marcus R.</strong>
+                                <small>Horizon Cruiser SUV · Karachi, Pakistan</small>
+                            </div>
+                            <span class="chip chip-accent" style="margin-left:auto">5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All reviews -->
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">All reviews</span>
+                        <h2 class="h2">Straight from the buyer</h2>
+                    </div>
+                </div>
+
+                <div class="review-toolbar reveal">
+                    <div class="pill-row" id="reviewFilters" style="margin:0"></div>
+                    <p class="muted"><strong id="reviewCount">0</strong> reviews shown</p>
+                </div>
+
+                <div class="review-grid" id="reviewGrid"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="card card-pad reveal" style="display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between">
+                    <div class="review-cta">
+                        <span class="eyebrow">Your turn</span>
+                        <h2 class="h3">Bought from CarBreezy recently?</h2>
+                        <p class="muted">Share your experience — we publish every verified review, in full.</p>
+                    </div>
+                    <a class="btn btn-primary" href="contact.html">Leave a review</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap-wide">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+                    <p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="new-cars.html">New cars</a></li>
+                        <li><a href="used-cars.html">Used cars</a></li>
+                        <li><a href="brands.html">Brands</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="contact.html#form">Request a callback</a></li>
+                        <li><a href="contact.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+                <span>Inspections · Financing · Nationwide delivery</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------- Page data ---------- */
+        var BREAKDOWN = [
+            { stars: 5, pct: 88 },
+            { stars: 4, pct: 9 },
+            { stars: 3, pct: 2 },
+            { stars: 2, pct: 1 },
+            { stars: 1, pct: 0 }
+        ];
+
+        var CATEGORIES = ['All', 'New cars', 'Used cars', 'Delivery', 'Finance'];
+
+        var REVIEWS = [
+    { name: 'Maria L.', meta: 'Volt E-Drive GT · Electric', score: 5, cat: 'New cars', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80', text: 'The range estimate matched reality almost exactly. Finance was approved in a day and the handover took under an hour.' },
+    { name: 'David R.', meta: 'Apex Velocity · New car', score: 5, cat: 'Finance', img: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80', text: 'Honest guidance throughout. They showed me the cheaper insurance class up front rather than after I signed.' },
+    { name: 'Nina S.', meta: 'Horizon Cruiser · New car', score: 4, cat: 'New cars', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80', text: 'Great specification detail. Slight delay on delivery day but kept me updated the whole time.' },
+    { name: 'Priya K.', meta: 'Urban Sprint · Used car', score: 5, cat: 'Used cars', img: 'https://images.unsplash.com/photo-1531123897727-8f129e1ebfa6?auto=format&fit=crop&w=150&q=80', text: 'The inspection report listed every scratch. No surprises at collection, which is exactly what I wanted.' },
+    { name: 'Tom H.', meta: 'Summit Trek X7 · Used car', score: 5, cat: 'Used cars', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80', text: 'Traded in my old car and got a fair price the same week. No haggling, just the number they quoted.' },
+    { name: 'Elena V.', meta: 'Nationwide transport · Delivery', score: 5, cat: 'Delivery', img: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80', text: 'Tracked the transport from Leeds to my door. Two days early and the car arrived spotless.' },
+    { name: 'Sam D.', meta: 'Aero Roadster · New car', score: 4, cat: 'New cars', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80', text: 'Beautiful car and a smooth purchase. I would have liked a longer test drive window.' },
+    { name: 'Grace O.', meta: 'Vega Performance Hybrid · Finance', score: 5, cat: 'Finance', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80', text: 'The monthly calculator matched the final offer almost exactly. No surprises in the paperwork.' },
+    { name: 'Owen F.', meta: 'Titan Crew · Used car', score: 5, cat: 'Used cars', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80', text: 'Honest about the tow rating being close to the limit. Respected that I needed it for the actual job.' },
+    { name: 'Ivy N.', meta: 'Home delivery · Delivery', score: 5, cat: 'Delivery', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80', text: 'They brought the car to my workplace and walked me through every function before I signed.' },
+    { name: 'Leo M.', meta: 'Lumen City EV · New car', score: 4, cat: 'New cars', img: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=150&q=80', text: 'Excellent value and the charging cable was included. Slight wait on paperwork.' },
+    { name: 'Amara J.', meta: 'Certified purchase · Used car', score: 5, cat: 'Used cars', img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80', text: 'The warranty made the decision easy. One call and it was sorted with no argument.' }
+];
+
+        var activeCategory = 'All';
+
+        function initials(name) {
+            return name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2).toUpperCase();
+        }
+
+        function stars(count) {
+            var out = '';
+            for (var i = 1; i <= 5; i++) {
+                out += '<i class="' + (i <= count ? 'fa-solid fa-star' : 'fa-regular fa-star') + '"></i>';
+            }
+            return '<span class="stars" role="img" aria-label="' + count + ' out of 5">' + out + '</span>';
+        }
+
+        function renderBars() {
+            document.getElementById('bars').innerHTML = BREAKDOWN.map(function (b) {
+                return '<div class="bar-row"><span>' + b.stars + ' star</span>' +
+                    '<div class="bar"><span style="width:' + b.pct + '%"></span></div>' +
+                    '<span>' + b.pct + '%</span></div>';
+            }).join('');
+        }
+
+        function renderFilters() {
+            document.getElementById('reviewFilters').innerHTML = CATEGORIES.map(function (c) {
+                return '<button class="pill' + (c === activeCategory ? ' active' : '') + '" type="button" data-cat="' + c + '">' + c + '</button>';
+            }).join('');
+        }
+
+        function renderReviews() {
+            var list = REVIEWS.filter(function (r) {
+                return activeCategory === 'All' || r.cat === activeCategory;
+            });
+
+            document.getElementById('reviewCount').textContent = list.length;
+            document.getElementById('reviewGrid').innerHTML = list.map(function (r) {
+                return '<article class="card review reveal">' +
+                    stars(r.score) +
+                    '<blockquote>' + r.text + '</blockquote>' +
+                    '<div class="who">' + (r.img ? '<img class="avatar" style="object-fit:cover;" src="' + r.img + '" alt="' + r.name + '">' : '<span class="avatar">' + initials(r.name) + '</span>') +
+                    '<div><strong>' + r.name + '</strong><small>' + r.meta + '</small></div>' +
+                    '<div class="rating"><strong>' + r.score.toFixed(1) + '</strong><small>Verified</small></div>' +
+                    '</div></article>';
+            }).join('');
+
+            if (window.CarBreezy) window.CarBreezy.observeReveals();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderBars();
+            renderFilters();
+            renderReviews();
+
+            document.getElementById('reviewFilters').addEventListener('click', function (e) {
+                var pill = e.target.closest('.pill');
+                if (!pill) return;
+                activeCategory = pill.dataset.cat;
+                renderFilters();
+                renderReviews();
+            });
+        });
+    </script>
+</body>
+</html>

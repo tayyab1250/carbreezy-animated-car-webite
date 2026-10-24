@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarBreezy — Premium Automotive Marketplace</title>
+<meta name="description" content="CarBreezy is a premium automotive marketplace for new and pre-owned vehicles with transparent pricing, verified inspections and nationwide delivery.">
+<link rel="icon" type="image/png" href="assets/logo-160.png">
+<link rel="apple-touch-icon" href="assets/logo-160.png">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/base.min.css">
+<link rel="stylesheet" href="css/carousel.min.css">
+<link rel="stylesheet" href="css/frame-hero.min.css">
+<link rel="stylesheet" href="css/home.min.css">
+<link rel="stylesheet" href="css/editorial-hero.min.css">
+<link rel="stylesheet" href="css/home-anim.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.js" defer></script>
+<script src="js/vendor/lenis.min.js" defer></script>
+<script src="js/site.min.js" defer></script>
+<script src="js/carousel.min.js" defer></script>
+<script src="js/stack-cards.min.js" defer></script>
+<script src="js/interactive-hero.min.js" defer></script>
+<script src="js/scroll-pass.min.js" defer></script>
+<script src="js/home-anim.min.js" defer></script>
+<link rel="preload" as="image" href="assets/hero-img3d.webp" fetchpriority="high">
+</head>
+<body class="has-page-bg">
+<div class="page-bg" aria-hidden="true"></div>
+<div class="cb-grain" aria-hidden="true"></div>
+<header class="site-header">
+<div class="wrap-wide header-inner">
+<a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+<button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+<nav class="nav" id="primaryNav" aria-label="Primary">
+<a href="index.html" class="active">Home</a>
+<a href="new-cars.html">New Cars</a>
+<a href="used-cars.html">Used Cars</a>
+<a href="brands.html">Brands</a>
+<a href="gallery.html">Gallery</a>
+<a href="reviews.html">Reviews</a>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+</nav>
+<div class="header-cta"><a class="btn btn-primary btn-sm" href="contact.html">Book a test drive</a></div>
+</div>
+</header>
+<main>
+<section class="interactive-hero">
+<video class="hero-video-bg" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1200&q=80">
+<source src="assets/hero-video.mp4" type="video/mp4">
+</video>
+<div class="wrap-wide hero-split">
+<div class="hero-content">
+<span class="eyebrow reveal">Premium vehicle marketplace</span>
+<h1 class="display reveal reveal-d1">Beyond Luxury.<br>Beyond Performance.</h1>
+<p class="lead reveal reveal-d2">A cross-brand collection of inspected vehicles, market-level pricing, and people who know cars.</p>
+<div class="hero-actions reveal reveal-d3">
+<a class="btn btn-primary" href="new-cars.html">Shop new cars <i class="fa-solid fa-arrow-right"></i></a>
+<a class="btn btn-ghost" href="used-cars.html">Browse certified used</a>
+</div>
+</div>
+<div class="hero-visual reveal reveal-d4">
+<div class="car-3d-container" id="car3dContainer">
+<img src="assets/hero-img3d.webp" alt="Luxury Car" class="car-3d-image" id="car3dImage" width="4240" height="2832" decoding="async" fetchpriority="high" loading="eager">
+<div class="car-3d-shadow"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-tight">
+<div class="wrap-wide"><div class="cat-rail reveal" id="categoryRail"></div></div>
+</section>
+<section class="stack-section" aria-label="Signature machines">
+<div class="wrap-wide">
+<div class="section-head">
+<div>
+<span class="eyebrow anim-eyebrow">Signature machines</span>
+<h2 class="h2">Three machines, one obsession</h2>
+<p class="lead anim-text">Scroll slowly — three standout machines rise from the stack, each with its full spec sheet and a direct line to the listing.</p>
+</div>
+<a class="btn btn-ghost anim-cta" href="used-cars.html">Browse certified used <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<div class="stack-track" id="stackTrack"></div>
+</div>
+</section>
+<section class="section">
+<div class="wrap-wide">
+<div class="section-head">
+<div>
+<span class="eyebrow anim-eyebrow">Fresh arrivals</span>
+<h2 class="h2">Featured this week</h2>
+<p class="lead anim-text">Hand-picked vehicles added in the last seven days, each one inspected and priced transparently.</p>
+</div>
+<a class="btn btn-ghost anim-cta" href="new-cars.html">View all inventory <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<div class="carousel at-start" id="featuredCarousel">
+<button class="carousel-nav prev" type="button" aria-label="Show previous items" aria-disabled="true"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+<div class="carousel-viewport" tabindex="0" role="group" aria-label="Featured vehicles, scrollable">
+<div class="carousel-track" id="featuredGrid" data-carousel-track></div>
+</div>
+<button class="carousel-nav next" type="button" aria-label="Show next items" aria-disabled="false"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+<div class="carousel-progress" aria-hidden="true"><span></span></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="wrap-wide">
+<div class="section-head">
+<div>
+<span class="eyebrow anim-eyebrow">Why CarBreezy</span>
+<h2 class="h2">A calmer way to buy a car</h2>
+</div>
+</div>
+<div class="grid grid-4" id="featureGrid"></div>
+</div>
+</section>
+<section class="section">
+<div class="wrap-wide">
+<div class="cta-band reveal">
+<span class="eyebrow">Ready when you are</span>
+<h2>Talk to a specialist, not a call centre</h2>
+<p class="lead">Get a shortlist built around your budget, your commute and the way you actually drive.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="contact.html">Request my shortlist</a>
+<a class="btn btn-ghost" href="gallery.html">See the gallery</a>
+</div>
+</div>
+</div>
+</section>
+
+
+
+<!-- ============================================================
+     EDITORIAL STORY SECTIONS — Cinematic car collection panels
+     ============================================================ -->
+<div class="cb-editorial-sections">
+
+  <!-- 01 — Hero story: entrance panel -->
+  <section class="cb-story cb-hero-story cb-is-visible" id="cb-discover" data-cb-story>
+    <div class="cb-copy">
+      <p class="cb-eyebrow">A considered collection / Cars for every kind of drive</p>
+      <h2 class="cb-heading" aria-label="Find the car that moves you. Driven by passion. Ready for what's next.">
+        <span class="cb-line"><span>Find the car</span></span>
+        <span class="cb-line"><span>that moves you.</span></span>
+        <span class="cb-line"><span>Driven by passion.</span></span>
+        <span class="cb-line"><span>Ready for <span class="cb-red-word">what's next.</span></span></span>
+      </h2>
+      <p class="cb-description">Explore a carefully selected collection of performance, luxury, and everyday vehicles. Discover your next car with a clearer, more considered way to shop.</p>
+      <a class="cb-outline-link" href="new-cars.html"><span>Explore the collection</span><span class="cb-arrow">↗</span></a>
+    </div>
+    <div class="cb-visual" data-cb-parallax>
+      <img src="https://images.unsplash.com/photo-1748569748174-33f4ba3ddcdf?auto=format&fit=crop&w=1400&q=85" alt="Premium car photographed from the front at night" loading="lazy" />
+    </div>
+    <span class="cb-section-number">01 — THE COLLECTION</span>
+  </section>
+
+  <!-- 02 — Performance -->
+  <section class="cb-story cb-category" id="cb-performance" data-cb-story>
+    <div class="cb-copy">
+      <p class="cb-eyebrow">The collection / 01</p>
+      <h2 class="cb-heading">
+        <span class="cb-line"><span>Performance</span></span>
+      </h2>
+      <p class="cb-description">Purposeful power, confident handling, and unmistakable presence. Explore performance cars made for drivers who want every journey to feel special.</p>
+      <a class="cb-outline-link" href="new-cars.html"><span>View performance cars</span><span class="cb-arrow">↗</span></a>
+    </div>
+    <div class="cb-visual cb-visual-color" data-cb-parallax>
+      <img src="https://images.unsplash.com/photo-1758944967041-29389a4eed5f?auto=format&fit=crop&w=1700&q=85" alt="Red performance car shown from the rear" loading="lazy" />
+      <span class="cb-visual-label">Performance / Made to be driven</span>
+    </div>
+    <span class="cb-vertical-word">POWER MEETS PURPOSE</span>
+    <span class="cb-section-number">02 — PERFORMANCE</span>
+  </section>
+
+  <!-- 03 — Luxury -->
+  <section class="cb-story cb-category" id="cb-luxury" data-cb-story>
+    <div class="cb-copy">
+      <p class="cb-eyebrow">The collection / 02</p>
+      <h2 class="cb-heading">
+        <span class="cb-line"><span>Luxury</span></span>
+      </h2>
+      <p class="cb-description">Thoughtful comfort, refined interiors, and effortless presence. Browse premium cars where the details make every mile feel a little different.</p>
+      <a class="cb-outline-link" href="new-cars.html"><span>Explore luxury cars</span><span class="cb-arrow">↗</span></a>
+    </div>
+    <div class="cb-visual" data-cb-parallax>
+      <img src="https://images.unsplash.com/photo-1583573736485-4add9bc7ac0a?auto=format&fit=crop&w=1700&q=85" alt="Detailed luxury car interior with leather and premium trim" loading="lazy" />
+      <span class="cb-visual-label">Luxury / Comfort in every detail</span>
+    </div>
+    <span class="cb-vertical-word">COMFORT WITH CHARACTER</span>
+    <span class="cb-section-number">03 — LUXURY</span>
+  </section>
+
+  <!-- 04 — SUVs & Sedans -->
+  <section class="cb-story cb-category" id="cb-suvs" data-cb-story>
+    <div class="cb-copy">
+      <p class="cb-eyebrow">The collection / 03</p>
+      <h2 class="cb-heading">
+        <span class="cb-line"><span>SUVs &amp;</span></span>
+        <span class="cb-line"><span>sedans</span></span>
+      </h2>
+      <p class="cb-description">Room for your plans, comfort for the everyday, and confidence for the long road ahead. Find a vehicle that fits the way you live.</p>
+      <a class="cb-outline-link" href="new-cars.html"><span>Find your everyday car</span><span class="cb-arrow">↗</span></a>
+    </div>
+    <div class="cb-visual cb-visual-color" data-cb-parallax>
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1700&q=85" alt="Premium car photographed in dramatic natural light" loading="lazy" />
+      <span class="cb-visual-label">Everyday / Ready for the road</span>
+    </div>
+    <span class="cb-vertical-word">SPACE TO GO FURTHER</span>
+    <span class="cb-section-number">04 — EVERYDAY DRIVING</span>
+  </section>
+
+  <!-- 05 — New Energy / Electric -->
+  <section class="cb-story cb-category" id="cb-electric" data-cb-story>
+    <div class="cb-copy">
+      <p class="cb-eyebrow">The collection / 04</p>
+      <h2 class="cb-heading">
+        <span class="cb-line"><span>New energy</span></span>
+      </h2>
+      <p class="cb-description">Modern design, quiet confidence, and a fresh way to move. Explore forward-looking vehicles for whatever your next chapter looks like.</p>
+      <a class="cb-outline-link" href="new-cars.html"><span>Discover your options</span><span class="cb-arrow">↗</span></a>
+    </div>
+    <div class="cb-visual" data-cb-parallax>
+      <img src="https://images.unsplash.com/photo-1734772141820-736aa494f064?auto=format&fit=crop&w=1700&q=85" alt="Modern exotic car with dramatic headlights and sculpted front end" loading="lazy" />
+      <span class="cb-visual-label">New energy / A different perspective</span>
+    </div>
+    <span class="cb-vertical-word">LOOKING AHEAD</span>
+    <span class="cb-section-number">05 — WHAT'S NEXT</span>
+  </section>
+
+  <!-- 06 — Closing panel -->
+  <section class="cb-story cb-closing" id="cb-collection" data-cb-story>
+    <div class="cb-copy">
+      <p class="cb-eyebrow">Your next drive starts here</p>
+      <h2 class="cb-heading">
+        <span class="cb-line"><span>Find your</span></span>
+        <span class="cb-line"><span class="cb-red-word">next car.</span></span>
+      </h2>
+      <p class="cb-description">Ready to make a move? Browse our categories, shortlist your favourites, and contact our team to confirm current stock, pricing, and a viewing.</p>
+      <a class="cb-outline-link" href="new-cars.html"><span>Browse all inventory</span><span class="cb-arrow">↗</span></a>
+    </div>
+    <span class="cb-section-number">06 — START YOUR SEARCH</span>
+  </section>
+
+</div>
+<!-- END EDITORIAL STORY SECTIONS -->
+
+<section class="finale-section" id="finaleStage" aria-label="CarBreezy — Ordinary Ends Here">
+<div class="finale-headline" id="finaleFirst"><h2>Ordinary</h2></div>
+<div class="finale-cars" id="finaleCars">
+<div class="finale-pass finale-pass-center" id="finalePass">
+<img src="assets/car-top.webp" alt="Top view of a performance car" width="316" height="632" decoding="async">
+</div>
+<div class="finale-pass finale-pass-side finale-pass-left" id="finalePassLeft" aria-hidden="true">
+<img src="assets/ferrari.webp" alt="" width="500" height="500" decoding="async">
+</div>
+<div class="finale-pass finale-pass-side finale-pass-right" id="finalePassRight" aria-hidden="true">
+<img src="assets/ferrari.webp" alt="" width="500" height="500" decoding="async">
+</div>
+</div>
+<div class="finale-headline finale-headline-last" id="finaleSecond">
+<h2>Ends Here</h2>
+<p>Complete expressions of taste, intent and individuality.</p>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap-wide">
+<div class="footer-grid">
+<div class="footer-about">
+<a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+<p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+<div class="socials">
+<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+<a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+</div>
+</div>
+<div>
+<h4>Shop</h4>
+<ul>
+<li><a href="new-cars.html">New cars</a></li>
+<li><a href="used-cars.html">Used cars</a></li>
+<li><a href="brands.html">Brands</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+</ul>
+</div>
+<div>
+<h4>Company</h4>
+<ul>
+<li><a href="about.html">About us</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4>Support</h4>
+<ul>
+<li><a href="contact.html#faq">FAQ</a></li>
+<li><a href="contact.html#form">Request a callback</a></li>
+<li><a href="contact.html#locations">Locations</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+<span>Inspections · Financing · Nationwide delivery</span>
+</div>
+</div>
+</footer>
+<script>
+var FEATURED_CARS=[
+{id:'nc-01',brand:'Aero',name:'Aero Roadster Convertible',body:'Convertible',price:'$64,500',engine:'3.0L V6',power:'385 HP',drive:'RWD',image:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',badge:'New'},
+{id:'nc-02',brand:'Volt',name:'Volt E-Drive GT',body:'Sedan',price:'$48,900',engine:'Dual motor EV',power:'480 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=80',badge:'Electric'},
+{id:'nc-03',brand:'Horizon',name:'Horizon Cruiser SUV',body:'SUV',price:'$53,800',engine:'3.5L V6',power:'295 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80',badge:'Popular'},
+{id:'nc-04',brand:'Apex',name:'Apex Velocity Sedan',body:'Sedan',price:'$42,000',engine:'2.0L Turbo',power:'255 HP',drive:'FWD',image:'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80',badge:'New'},
+{id:'nc-05',brand:'Summit',name:'Summit Trek X7',body:'SUV',price:'$31,600',engine:'2.7L Turbo',power:'310 HP',drive:'4WD',image:'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=80',badge:'Value'},
+{id:'nc-06',brand:'Urban',name:'Urban Sprint Hatchback',body:'Hatchback',price:'$18,200',engine:'1.5L I4',power:'118 HP',drive:'FWD',image:'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80',badge:'Great value'},
+{id:'nc-07',brand:'Apex',name:'Vantage GT Coupe',body:'Coupe',price:'$58,900',engine:'4.0L V8',power:'420 HP',drive:'RWD',image:'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1000&q=80',badge:'Performance'},
+{id:'nc-08',brand:'Lumen',name:'Lumen City EV Hatch',body:'Hatchback',price:'$34,900',engine:'Electric 60 kWh',power:'230 HP',drive:'FWD',image:'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1000&q=80',badge:'Electric'},
+{id:'nc-09',brand:'Titan',name:'Titan Crew Pickup',body:'Truck',price:'$62,400',engine:'3.0L Diesel V6',power:'350 HP',drive:'4WD',image:'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80',badge:'Tough'},
+{id:'nc-10',brand:'Vega',name:'Vega Performance Hybrid',body:'Sedan',price:'$46,500',engine:'2.0L Hybrid',power:'305 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80',badge:'Hybrid'},
+{id:'nc-11',brand:'Aurora',name:'Aurora GT-R Coupé',body:'Coupe',price:'$72,400',engine:'3.0L Twin-Turbo V6',power:'460 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=80',badge:'Just in'},
+{id:'nc-12',brand:'Nordwind',name:'Nordwind Estate Touring',body:'Estate',price:'$43,600',engine:'2.0L Diesel',power:'198 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1568844293986-8d0400bd4745?auto=format&fit=crop&w=1000&q=80',badge:'Family pick'},
+{id:'nc-13',brand:'Marlin',name:'Marlin Roadster GT',body:'Convertible',price:'$58,100',engine:'3.0L V6',power:'340 HP',drive:'RWD',image:'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80',badge:'New'},
+{id:'nc-14',brand:'Onyx',name:'Onyx M4 Competition',body:'Sedan',price:'$76,800',engine:'3.0L Twin-Turbo I6',power:'510 HP',drive:'RWD',image:'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1000&q=80',badge:'Flagship'},
+{id:'nc-15',brand:'Kestrel',name:'Kestrel Adventure SUV',body:'SUV',price:'$54,900',engine:'2.5L Hybrid',power:'286 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1000&q=80',badge:'Hybrid'},
+{id:'nc-16',brand:'Valencienne',name:'Valencienne Nocturne GT',body:'Coupe',price:'$112,000',engine:'6.5L V12',power:'612 HP',drive:'RWD',image:'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1000&q=80',badge:'Flagship'},
+{id:'nc-17',brand:'Ardenne',name:'Ardenne Sovereign SUV',body:'SUV',price:'$96,500',engine:'4.0L V8 Hybrid',power:'540 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=1000&q=80',badge:'Luxury hybrid'},
+{id:'nc-18',brand:'Corvina',name:'Corvina Tipo 9 R',body:'Coupe',price:'$84,900',engine:'4.0L Flat-six',power:'471 HP',drive:'RWD',image:'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1000&q=80',badge:'Drivers car'},
+{id:'nc-19',brand:'Solstice',name:'Solstice Imperator Limo',body:'Sedan',price:'$88,400',engine:'4.4L V8',power:'498 HP',drive:'AWD',image:'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=1000&q=80',badge:'Executive'}
+];
+var CATEGORIES=[
+{icon:'fa-solid fa-city',name:'Sedans',count:'1,240 listings',href:'new-cars.html'},
+{icon:'fa-solid fa-road',name:'SUVs',count:'2,310 listings',href:'new-cars.html'},
+{icon:'fa-solid fa-gauge-high',name:'Hatchbacks',count:'760 listings',href:'used-cars.html'},
+{icon:'fa-solid fa-wind',name:'Convertibles',count:'210 listings',href:'new-cars.html'},
+{icon:'fa-solid fa-bolt',name:'Electric',count:'540 listings',href:'new-cars.html'},
+{icon:'fa-solid fa-truck-pickup',name:'Trucks',count:'480 listings',href:'used-cars.html'}
+];
+var STACK_CARS=[
+{number:'01',category:'Electric',name:'Volt E-Drive GT',description:'Long-range dual-motor sedan with the fastest charging curve in our inventory — 520 km of range and a cabin built around a 15-inch display.',specs:[{label:'0–100 KM/H',value:'3.4s'},{label:'Output',value:'480 HP'},{label:'Range',value:'520 KM'}],cta:'View listing',href:'used-cars.html#uc-01',image:'assets/volt%20edrive-gt.webp'},
+{number:'02',category:'Sport sedan',name:'Apex Velocity Turbo',description:'A 7-speed DCT sport sedan with a tuned turbo curve and chassis bracing — sharp enough for track days, quiet enough for the daily commute.',specs:[{label:'0–100 KM/H',value:'5.1s'},{label:'Output',value:'255 HP'},{label:'Gearbox',value:'7-speed DCT'}],cta:'View listing',href:'used-cars.html#uc-03',image:'assets/apex%20velocity%20turbo.webp'},
+{number:'03',category:'SUV',name:'Summit Trek X7',description:'Trail-rated 4WD with a tow pack and all-terrain tyres — the kind of SUV that handles a gravel driveway and a city car park with equal ease.',specs:[{label:'0–100 KM/H',value:'6.2s'},{label:'Output',value:'310 HP'},{label:'Drive',value:'4WD'}],cta:'View listing',href:'used-cars.html#uc-05',image:'assets/sumit%20track%20x7.webp'}
+];
+var FEATURES=[
+{icon:'fa-solid fa-shield-halved',title:'Verified vehicles',text:'Every listing passes a 120-point inspection and comes with a documented condition report.'},
+{icon:'fa-solid fa-chart-line',title:'Transparent pricing',text:'One clear price, no dealer add-ons. Market data shown side by side so you can benchmark.'},
+{icon:'fa-solid fa-percent',title:'Flexible financing',text:'Pre-approved rates from 4.9% APR, with balloon and lease structures for every budget.'},
+{icon:'fa-solid fa-truck-fast',title:'Door-to-door delivery',text:'Local pickup or fully insured nationwide transport, tracked end to end.'}
+];
+var PROCESS=[
+{title:'Tell us what fits',text:'Budget, commute, fuel preference, family size. Two minutes, no account needed.'},
+{title:'Compare real numbers',text:'Specs, ownership cost, insurance class and resale value for every candidate vehicle.'},
+{title:'Reserve with confidence',text:'Secure it with a refundable deposit, then pick up or have it shipped to your door.'}
+];
+var BRANDS=[
+{name:'BMW',models:'38 models',href:'brands.html#bmw'},
+{name:'Tesla',models:'12 models',href:'brands.html#tesla'},
+{name:'Ford',models:'46 models',href:'brands.html#ford'},
+{name:'Mercedes',models:'41 models',href:'brands.html#mercedes'},
+{name:'Honda',models:'29 models',href:'brands.html#honda'},
+{name:'Jeep',models:'17 models',href:'brands.html#jeep'},
+{name:'Audi',models:'33 models',href:'brands.html#audi'}
+];
+var OFFERS=[
+{badge:'Limited time',title:'0% APR financing',text:'Zero percent interest for up to 48 months on selected new sedans and hatchbacks in stock.'},
+{badge:'Trade-in',title:'$2,000 extra value',text:'Instant valuation bonus on any certified used trade-in, applied directly to your balance.'},
+{badge:'Ownership',title:'2-year service plan',text:'Complimentary scheduled maintenance and roadside assistance with every new convertible.'}
+];
+function carCardTemplate(car){
+return '<div class="card car-card reveal" aria-label="'+car.name+' — '+car.price+'">'+
+'<a href="new-cars.html#'+car.id+'" class="car-media"><span class="chip chip-accent car-tag">'+car.badge+'</span>'+
+'<img src="'+car.image+'" alt="'+car.name+'" loading="lazy" width="600" height="375" decoding="async"></a>'+
+'<div class="car-body">'+
+'<a href="new-cars.html#'+car.id+'" class="car-title"><h3>'+car.name+'</h3><span class="car-price">'+car.price+'</span></a>'+
+'<div class="spec-row">'+
+'<div><span>Engine</span><strong>'+car.engine+'</strong></div>'+
+'<div><span>Output</span><strong>'+car.power+'</strong></div>'+
+'<div><span>Drive</span><strong>'+car.drive+'</strong></div>'+
+'</div>'+
+'<a class="car-cta" href="new-cars.html?brand='+encodeURIComponent(car.brand)+'">Check more '+car.brand+' models <i class="fa-solid fa-arrow-right"></i></a>'+
+'</div></div>';
+}
+document.addEventListener('DOMContentLoaded',function(){
+var stackTrack=document.getElementById('stackTrack');
+if(stackTrack&&window.AutomotiveStack){window.AutomotiveStack(stackTrack,STACK_CARS);}
+window.featuredCarousel=new ContentCarousel(document.getElementById('featuredCarousel'),{
+items:FEATURED_CARS,
+render:carCardTemplate,
+onReady:function(carousel){if(window.CarBreezy){window.CarBreezy.observeReveals(carousel.track);}}
+});
+document.getElementById('categoryRail').innerHTML=CATEGORIES.map(function(c){
+return '<a class="cat-card reveal" href="'+c.href+'"><i class="'+c.icon+'"></i><strong>'+c.name+'</strong><small>'+c.count+'</small></a>';
+}).join('');
+document.getElementById('featureGrid').innerHTML=FEATURES.map(function(f){
+return '<article class="card card-pad feature-card reveal"><span class="feature-icon"><i class="'+f.icon+'"></i></span><h3 class="h3">'+f.title+'</h3><p class="muted">'+f.text+'</p></article>';
+}).join('');
+var processGrid=document.getElementById('processGrid');
+if(processGrid)processGrid.innerHTML=PROCESS.map(function(p,i){
+return '<article class="card card-pad reveal"><div class="step"><b>0'+(i+1)+'</b><div><h3 class="h3">'+p.title+'</h3><p class="muted">'+p.text+'</p></div></div></article>';
+}).join('');
+var brandStrip=document.getElementById('brandStrip');
+if(brandStrip)brandStrip.innerHTML=BRANDS.map(function(b){
+return '<a href="'+b.href+'">'+b.name+'<small>'+b.models+'</small></a>';
+}).join('');
+var offerGrid=document.getElementById('offerGrid');
+if(offerGrid)offerGrid.innerHTML=OFFERS.map(function(o){
+return '<article class="offer reveal"><span class="chip">'+o.badge+'</span><h3>'+o.title+'</h3><p>'+o.text+'</p></article>';
+}).join('');
+});
+</script>
+<script src="js/editorial-hero.min.js" defer></script>
+</body>
+</html>

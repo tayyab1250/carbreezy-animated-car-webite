@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery — CarBreezy</title>
+    <meta name="description" content="Browse the CarBreezy gallery — hand-picked new and used vehicles, interiors, wheels and delivery moments, filterable by category.">
+    <link rel="icon" type="image/png" href="assets/logo-160.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/gallery.min.css">
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/site.min.js" defer></script>
+</head>
+<body>
+<div class="cb-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="wrap-wide header-inner">
+            <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+            <nav class="nav" id="primaryNav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="new-cars.html">New Cars</a>
+                <a href="used-cars.html">Used Cars</a>
+                <a href="brands.html">Brands</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <a class="btn btn-primary btn-sm" href="contact.html">Book a viewing</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero" style="--page-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80');">
+            <div class="wrap-wide">
+                <span class="eyebrow">Look closer</span>
+                <h1 class="display">The CarBreezy gallery</h1>
+                <p class="lead">Real vehicles from our network, photographed in daylight and at delivery.
+                    Filter by category and open any shot full screen.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a> <span>/</span> <span>Gallery</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="pill-row" id="pillRow" role="tablist" aria-label="Gallery categories"></div>
+                <div class="gallery" id="gallery"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="gallery-cta reveal">
+                    <div>
+                        <span class="eyebrow">Seen enough?</span>
+                        <h2 class="h3">See one of these in person</h2>
+                        <p class="muted">Book a no-obligation viewing at any CarBreezy hub or request a home delivery slot.</p>
+                    </div>
+                    <a class="btn btn-primary" href="contact.html">Arrange a viewing</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" type="button" id="lbClose" aria-label="Close viewer">&times;</button>
+            <button class="lightbox-nav prev" type="button" id="lbPrev" aria-label="Previous image">&#8249;</button>
+            <button class="lightbox-nav next" type="button" id="lbNext" aria-label="Next image">&#8250;</button>
+            <img id="lbImage" src="assets/logo-160.png" alt="" decoding="async">
+            <div class="lightbox-caption">
+                <div>
+                    <strong id="lbTitle"></strong>
+                    <small id="lbMeta"></small>
+                </div>
+                <span class="chip" id="lbCounter"></span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="wrap-wide">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+                    <p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="new-cars.html">New cars</a></li>
+                        <li><a href="used-cars.html">Used cars</a></li>
+                        <li><a href="brands.html">Brands</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="contact.html#form">Request a callback</a></li>
+                        <li><a href="contact.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+                <span>Inspections · Financing · Nationwide delivery</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------- Page data ---------- */
+        var CATEGORIES = ['All', 'Sedans', 'SUVs', 'Electric', 'Sport', 'Interior', 'Delivery'];
+
+        var SHOTS = [
+            { cat: 'Sport', title: 'Aero Roadster at first light', meta: 'Aero Roadster · Convertible', src: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1100&q=80', tall: true },
+            { cat: 'SUV', title: 'Horizon Cruiser X-Line', meta: 'Horizon · SUV', src: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Electric', title: 'Volt E-Drive GT charging bay', meta: 'Volt · Electric', src: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1100&q=80', tall: true },
+            { cat: 'Sedans', title: 'Apex Velocity in city traffic', meta: 'Apex · Sedan', src: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Interior', title: 'Nappa leather and walnut trim', meta: 'Interior detail', src: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Delivery', title: 'Handover day, key moment', meta: 'Delivery event', src: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1100&q=80', tall: true },
+            { cat: 'SUV', title: 'Summit Trek X7 trail mode', meta: 'Summit · SUV', src: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Sport', title: 'Vantage GT on the coast road', meta: 'Apex · Coupe', src: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Electric', title: 'Lumen City EV at the kerb', meta: 'Lumen · Hatchback', src: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Interior', title: 'Digital cockpit, 15-inch display', meta: 'Interior detail', src: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Delivery', title: 'Nationwide transport, day two', meta: 'Delivery event', src: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1100&q=80', tall: true },
+            { cat: 'Sedans', title: 'Executive saloon at dusk', meta: 'Vega · Hybrid', src: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'SUV', title: 'Titan Crew, bed and rails', meta: 'Titan · Truck', src: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1100&q=80' },
+            { cat: 'Sport', title: 'Track day, carbon aero', meta: 'Apex · Sport pack', src: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1100&q=80' }
+        ];
+
+        var activeCategory = 'All';
+        var lightboxIndex = 0;
+
+        function visibleShots() {
+            return SHOTS.filter(function (s) {
+                return activeCategory === 'All' || s.cat === activeCategory;
+            });
+        }
+
+        function renderPills() {
+            document.getElementById('pillRow').innerHTML = CATEGORIES.map(function (c) {
+                var count = c === 'All' ? SHOTS.length : SHOTS.filter(function (s) { return s.cat === c; }).length;
+                return '<button class="pill' + (c === activeCategory ? ' active' : '') + '" type="button" ' +
+                    'role="tab" aria-selected="' + (c === activeCategory) + '" data-cat="' + c + '">' +
+                    c + ' · ' + count + '</button>';
+            }).join('');
+        }
+
+        function renderGallery() {
+            var list = visibleShots();
+
+            document.getElementById('gallery').innerHTML = list.map(function (s, i) {
+                return '<figure class="shot reveal" role="button" tabindex="0" data-index="' + i + '">' +
+                    '<img src="' + s.src + '" alt="' + s.title + '" loading="lazy" width="900" height="' +
+                    (s.tall ? 1200 : 640) + '" decoding="async">' +
+                    '<span class="chip">' + s.cat + '</span>' +
+                    '<figcaption><span><strong>' + s.title + '</strong><small>' + s.meta + '</small></span></figcaption>' +
+                    '</figure>';
+            }).join('');
+
+            if (window.CarBreezy) window.CarBreezy.observeReveals();
+        }
+
+        function openLightbox(index) {
+            var list = visibleShots();
+            lightboxIndex = (index + list.length) % list.length;
+            var shot = list[lightboxIndex];
+
+            document.getElementById('lbImage').src = shot.src;
+            document.getElementById('lbImage').alt = shot.title;
+            document.getElementById('lbTitle').textContent = shot.title;
+            document.getElementById('lbMeta').textContent = shot.meta;
+            document.getElementById('lbCounter').textContent = (lightboxIndex + 1) + ' / ' + list.length;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            if (window.CarBreezy && window.CarBreezy.lenis) window.CarBreezy.lenis.stop();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+            if (window.CarBreezy && window.CarBreezy.lenis) window.CarBreezy.lenis.start();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderPills();
+            renderGallery();
+
+            document.getElementById('pillRow').addEventListener('click', function (e) {
+                var pill = e.target.closest('.pill');
+                if (!pill) return;
+                activeCategory = pill.dataset.cat;
+                renderPills();
+                renderGallery();
+            });
+
+            document.getElementById('gallery').addEventListener('click', function (e) {
+                var shot = e.target.closest('.shot');
+                if (shot) openLightbox(+shot.dataset.index);
+            });
+
+            document.getElementById('gallery').addEventListener('keydown', function (e) {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                var shot = e.target.closest('.shot');
+                if (!shot) return;
+                e.preventDefault();
+                openLightbox(+shot.dataset.index);
+            });
+
+            document.getElementById('lbClose').addEventListener('click', closeLightbox);
+            document.getElementById('lbPrev').addEventListener('click', function () { openLightbox(lightboxIndex - 1); });
+            document.getElementById('lbNext').addEventListener('click', function () { openLightbox(lightboxIndex + 1); });
+            document.getElementById('lightbox').addEventListener('click', function (e) {
+                if (e.target === e.currentTarget) closeLightbox();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (!document.getElementById('lightbox').classList.contains('open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') openLightbox(lightboxIndex - 1);
+                if (e.key === 'ArrowRight') openLightbox(lightboxIndex + 1);
+            });
+        });
+    </script>
+</body>
+</html>

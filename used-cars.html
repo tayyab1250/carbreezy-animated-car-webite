@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certified Used Cars — CarBreezy</title>
+    <meta name="description" content="Shop certified pre-owned cars on CarBreezy. Every vehicle is inspected, history-checked and backed by a warranty, with transparent pricing.">
+    <link rel="icon" type="image/png" href="assets/logo-160.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/used-cars.min.css">
+    <script src="js/vendor/lenis.min.js" defer></script>
+    <script src="js/site.min.js" defer></script>
+</head>
+<body>
+<div class="cb-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="wrap-wide header-inner">
+            <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+            <nav class="nav" id="primaryNav" aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="new-cars.html">New Cars</a>
+                <a href="used-cars.html" class="active">Used Cars</a>
+                <a href="brands.html">Brands</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-cta">
+                <a class="btn btn-primary btn-sm" href="contact.html">Get a valuation</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero" style="--page-image: url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1800&q=80');">
+            <div class="wrap-wide">
+                <span class="eyebrow">Certified pre-owned</span>
+                <h1 class="display">Used cars that still feel new</h1>
+                <p class="lead">Each listing is a 120-point inspected, history-checked vehicle with a warranty,
+                    a full service record and a price benchmark against the market.</p>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a> <span>/</span> <span>Used Cars</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="section-tight">
+            <div class="wrap-wide">
+                <div class="stat-row reveal">
+                    <div class="stat"><strong>7,940</strong><span>Certified vehicles</span></div>
+                    <div class="stat"><strong>120</strong><span>Point inspection</span></div>
+                    <div class="stat"><strong>24 mo</strong><span>Standard warranty</span></div>
+                    <div class="stat"><strong>£0</strong><span>History-check fee</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search -->
+        <section class="section">
+            <div class="wrap-wide">
+                <form class="search-strip reveal" id="searchForm">
+                    <label class="field">
+                        <span>Body type</span>
+                        <select id="fBody">
+                            <option value="All">Any body</option>
+                            <option>Sedan</option>
+                            <option>SUV</option>
+                            <option>Hatchback</option>
+                            <option>Convertible</option>
+                            <option>Coupe</option>
+                            <option>Truck</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span>Max price</span>
+                        <select id="fPrice">
+                            <option value="0">Any price</option>
+                            <option value="20000">Up to $20,000</option>
+                            <option value="30000">Up to $30,000</option>
+                            <option value="45000">Up to $45,000</option>
+                            <option value="70000">Up to $70,000</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span>Max mileage</span>
+                        <select id="fMiles">
+                            <option value="0">Any mileage</option>
+                            <option value="30000">Under 30,000</option>
+                            <option value="60000">Under 60,000</option>
+                            <option value="100000">Under 100,000</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span>Fuel</span>
+                        <select id="fFuel">
+                            <option value="All">Any fuel</option>
+                            <option>Petrol</option>
+                            <option>Diesel</option>
+                            <option>Hybrid</option>
+                            <option>Electric</option>
+                        </select>
+                    </label>
+                    <div class="select-row">
+                        <button class="btn btn-primary" type="submit">Search inventory</button>
+                        <button class="btn btn-ghost" type="reset" id="resetBtn">Reset</button>
+                    </div>
+                </form>
+
+                <div class="toolbar">
+                    <p><strong id="count">0</strong> certified vehicles found</p>
+                    <label>
+                        <span class="chip">Sort</span>
+                        <select class="sort-select" id="sortBy">
+                            <option value="price-asc">Price: low to high</option>
+                            <option value="price-desc">Price: high to low</option>
+                            <option value="miles-asc">Lowest mileage</option>
+                            <option value="score-desc">Best inspection</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="listing-layout">
+                    <div class="listing-list" id="listingList"></div>
+
+                    <aside class="sidebar">
+                        <div class="side-card guarantee reveal">
+                            <i class="fa-solid fa-shield-heart"></i>
+                            <h3>CarBreezy assurance</h3>
+                            <p>Every certified vehicle includes a 24-month warranty, 12 months of roadside assistance
+                                and free servicing for the first year.</p>
+                        </div>
+
+                        <div class="side-card reveal">
+                            <h3>Popular searches</h3>
+                            <div class="side-list" id="popularList"></div>
+                        </div>
+
+                        <div class="side-card reveal">
+                            <h3>Sell your car</h3>
+                            <p>Get an instant valuation with a same-day offer, no obligation to proceed.</p>
+                            <a class="btn btn-ghost btn-sm" href="contact.html" style="margin-top:14px">Start valuation</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ownership history -->
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="eyebrow">Full transparency</span>
+                        <h2 class="h2">Everything we know about a car</h2>
+                    </div>
+                </div>
+                <div class="grid grid-4" id="historyGrid"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="wrap-wide">
+                <div class="card card-pad reveal" style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+                    <div>
+                        <h2 class="h3">Trading up or down?</h2>
+                        <p class="muted">Send us your current vehicle details and we will price it before you commit to anything.</p>
+                    </div>
+                    <a class="btn btn-primary" href="contact.html">Get a trade offer</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap-wide">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><img src="assets/logo-160.png" alt="CarBreezy logo" decoding="async">Car<span>Breezy</span></a>
+                    <p>A premium automotive marketplace pairing verified vehicles with transparent pricing and people who know cars.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="new-cars.html">New cars</a></li>
+                        <li><a href="used-cars.html">Used cars</a></li>
+                        <li><a href="brands.html">Brands</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="contact.html#form">Request a callback</a></li>
+                        <li><a href="contact.html#locations">Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span data-year>2026</span> CarBreezy Marketplace. All rights reserved.</span>
+                <span>Inspections · Financing · Nationwide delivery</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ---------- Page data ---------- */
+        var CARS = [
+            {
+                id: 'uc-01', name: 'Volt E-Drive GT Long Range', brand: 'Volt', body: 'Sedan', fuel: 'Electric',
+                price: 38900, year: 2022, miles: 24000, power: '480 HP', gearbox: 'Single speed', drive: 'AWD',
+                owners: 1, score: 96, location: 'Karachi, Pakistan', image: 'https://images.unsplash.com/photo-1536700503339-1e4b06520771?auto=format&fit=crop&w=1000&q=80',
+                service: 'Full service history · 12 months warranty remaining'
+            },
+            {
+                id: 'uc-02', name: 'Horizon Cruiser SUV X-Line', brand: 'Horizon', body: 'SUV', fuel: 'Petrol',
+                price: 36400, year: 2021, miles: 41000, power: '295 HP', gearbox: '9-speed auto', drive: 'AWD',
+                owners: 2, score: 92, location: 'Leeds', image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1000&q=80',
+                service: 'Two services completed · 12 months warranty remaining'
+            },
+            {
+                id: 'uc-03', name: 'Apex Velocity Turbo', brand: 'Apex', body: 'Sedan', fuel: 'Petrol',
+                price: 27950, year: 2020, miles: 58000, power: '255 HP', gearbox: '7-speed DCT', drive: 'FWD',
+                owners: 2, score: 89, location: 'Birmingham', image: 'https://images.unsplash.com/photo-1616422285623-13ff0162193c?auto=format&fit=crop&w=1000&q=80',
+                service: 'Full history · new tyres fitted'
+            },
+            {
+                id: 'uc-04', name: 'Urban Sprint GTS', brand: 'Urban', body: 'Hatchback', fuel: 'Petrol',
+                price: 16400, year: 2019, miles: 72000, power: '158 HP', gearbox: '6-speed manual', drive: 'FWD',
+                owners: 3, score: 84, location: 'Bristol', image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1000&q=80',
+                service: 'Full history · timing belt replaced'
+            },
+            {
+                id: 'uc-05', name: 'Summit Trek X7 Trail', brand: 'Summit', body: 'SUV', fuel: 'Diesel',
+                price: 29800, year: 2021, miles: 67000, power: '310 HP', gearbox: '8-speed auto', drive: '4WD',
+                owners: 2, score: 90, location: 'Edinburgh', image: 'https://images.unsplash.com/photo-1582006733220-410a08e1a11f?auto=format&fit=crop&w=1000&q=80',
+                service: 'Full history · tow pack installed'
+            },
+            {
+                id: 'uc-06', name: 'Aero Roadster S-Class', brand: 'Aero', body: 'Convertible', fuel: 'Petrol',
+                price: 44800, year: 2020, miles: 38000, power: '385 HP', gearbox: '8-speed auto', drive: 'RWD',
+                owners: 1, score: 94, location: 'London', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+                service: 'Full history · new soft top'
+            },
+            {
+                id: 'uc-07', name: 'Vega Performance Hybrid', brand: 'Vega', body: 'Sedan', fuel: 'Hybrid',
+                price: 32900, year: 2022, miles: 31000, power: '305 HP', gearbox: 'e-CVT', drive: 'AWD',
+                owners: 1, score: 95, location: 'Karachi, Pakistan', image: 'https://images.unsplash.com/photo-1559404287-6e9f90f23f00?auto=format&fit=crop&w=1000&q=80',
+                service: 'First service completed · battery health 96%'
+            },
+            {
+                id: 'uc-08', name: 'Titan Crew Workhorse', brand: 'Titan', body: 'Truck', fuel: 'Diesel',
+                price: 41500, year: 2019, miles: 96000, power: '350 HP', gearbox: '10-speed auto', drive: '4WD',
+                owners: 1, score: 82, location: 'Cardiff', image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1000&q=80',
+                service: 'Full history · commercial use documented'
+            }
+        ];
+
+        var POPULAR = [
+            { label: 'SUV under $35k', count: 1240 },
+            { label: 'Electric under $40k', count: 620 },
+            { label: 'Under 50k miles', count: 3180 },
+            { label: 'One owner', count: 2450 },
+            { label: 'Diesel automatics', count: 780 }
+        ];
+
+        var HISTORY = [
+            { n: '01', title: 'Ownership verified', text: 'Registered keeper data, finance status and number of previous owners confirmed at source.' },
+            { n: '02', title: 'Service records', text: 'Every invoice, MOT and major repair is checked for gaps, dates and mileage consistency.' },
+            { n: '03', title: 'Structural check', text: 'Underbody, chassis and accident-damage areas are measured against factory tolerances.' },
+            { n: '04', title: 'Market benchmark', text: 'The price is compared against identical mileage and spec vehicles sold in the last 90 days.' }
+        ];
+
+        var filters = { body: 'All', price: 0, miles: 0, fuel: 'All' };
+        var activeBrand = new URLSearchParams(window.location.search).get('brand');
+
+        function money(v) { return '$' + v.toLocaleString('en-US'); }
+
+        function apply() {
+            var list = CARS.filter(function (c) {
+                var brandMatch = activeBrand ? c.brand.toLowerCase() === activeBrand.toLowerCase() : true;
+                return brandMatch &&
+                    (filters.body === 'All' || c.body === filters.body) &&
+                    (filters.fuel === 'All' || c.fuel === filters.fuel) &&
+                    (filters.price === 0 || c.price <= filters.price) &&
+                    (filters.miles === 0 || c.miles <= filters.miles);
+            });
+
+            var sort = document.getElementById('sortBy').value;
+            list.sort(function (a, b) {
+                if (sort === 'price-desc') return b.price - a.price;
+                if (sort === 'miles-asc') return a.miles - b.miles;
+                if (sort === 'score-desc') return b.score - a.score;
+                return a.price - b.price;
+            });
+
+            render(list);
+        }
+
+        function render(list) {
+            var box = document.getElementById('listingList');
+
+            if (!list.length) {
+                box.innerHTML = '<div class="no-results"><h3 class="h3">No vehicles match those filters</h3>' +
+                    '<p>Widen the price or mileage range, or ask us to source one for you.</p></div>';
+                document.getElementById('count').textContent = 0;
+                return;
+            }
+
+            document.getElementById('count').textContent = list.length;
+            var countEl = document.getElementById('count');
+            if (activeBrand) {
+                countEl.nextSibling.textContent = " certified " + activeBrand + " vehicles found";
+            } else {
+                countEl.nextSibling.textContent = " certified vehicles found";
+            }
+
+            box.innerHTML = list.map(function (c) {
+                return '<article class="card listing reveal">' +
+                    '<div class="listing-media">' +
+                    '<span class="chip chip-live">Certified</span>' +
+                    '<img src="' + c.image + '" alt="' + c.name + '" loading="lazy" width="600" height="400" decoding="async"></div>' +
+                    '<div class="listing-body">' +
+                    '<div class="listing-head"><div><h3>' + c.name + '</h3>' +
+                    '<p>' + c.year + ' · ' + c.location + '</p></div>' +
+                    '<div class="listing-price">' + money(c.price) + '<small>' + Math.round(c.price / 60) + '/mo est.</small></div></div>' +
+                    '<div class="meta-row">' +
+                    '<span><i class="fa-solid fa-gauge"></i>' + c.miles.toLocaleString('en-US') + ' mi</span>' +
+                    '<span><i class="fa-solid fa-user"></i>' + c.owners + ' owner' + (c.owners > 1 ? 's' : '') + '</span>' +
+                    '<span><i class="fa-solid fa-bolt"></i>' + c.power + '</span>' +
+                    '<span><i class="fa-solid fa-gears"></i>' + c.gearbox + '</span>' +
+                    '<span><i class="fa-solid fa-road"></i>' + c.drive + '</span>' +
+                    '</div>' +
+                    '<div class="inspection"><span class="muted" style="font-size:.82rem">Inspection score ' + c.score + '/100</span>' +
+                    '<div class="inspection-bar"><span style="width:' + c.score + '%"></span></div></div>' +
+                    '<p class="muted" style="font-size:.86rem">' + c.service + '</p>' +
+                    '<div class="listing-actions">' +
+                    '<a class="btn btn-primary btn-sm" href="contact.html">Reserve</a>' +
+                    '<a class="btn btn-ghost btn-sm" href="contact.html">Book a viewing</a>' +
+                    '</div>' +
+                    '</div></article>';
+            }).join('');
+
+            if (window.CarBreezy) window.CarBreezy.observeReveals();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('popularList').innerHTML = POPULAR.map(function (p) {
+                return '<div><span>' + p.label + '</span><strong>' + p.count.toLocaleString('en-US') + '</strong></div>';
+            }).join('');
+
+            document.getElementById('historyGrid').innerHTML = HISTORY.map(function (h) {
+                return '<article class="card card-pad reveal"><div class="history-step"><b>' + h.n + '</b>' +
+                    '<div><h3 class="h3">' + h.title + '</h3><p class="muted">' + h.text + '</p></div></div></article>';
+            }).join('');
+
+            document.getElementById('searchForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                filters.body = document.getElementById('fBody').value;
+                filters.price = +document.getElementById('fPrice').value;
+                filters.miles = +document.getElementById('fMiles').value;
+                filters.fuel = document.getElementById('fFuel').value;
+                apply();
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', function () {
+                setTimeout(function () {
+                    filters = { body: 'All', price: 0, miles: 0, fuel: 'All' };
+                    apply();
+                }, 0);
+            });
+
+            document.getElementById('sortBy').addEventListener('change', apply);
+            apply();
+        });
+    </script>
+</body>
+</html>
